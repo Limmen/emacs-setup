@@ -39,6 +39,9 @@
 ;;(global-set-key (kbd "C-D") 'backward-kill-line)
 (global-set-key (kbd "C-z") 'undo) 
 ;;(global-set-key (kbd "C-Z") 'redo)  
+(global-set-key (kbd "C-x C-h") (lambda() (interactive)(find-file "/home/kim/")))
+(global-set-key (kbd "C-x C-r") (lambda() (interactive)(find-file "/")))
+
 
 (require 'erlang-start)
 

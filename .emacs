@@ -23,7 +23,7 @@
 (require 'flycheck)
 (add-hook 'js-mode-hook
           (lambda () (flycheck-mode t)))
-(add-hook 'LaTeX-mode-hook 'flycheck-mode)
+;;(add-hook 'LaTeX-mode-hook 'flycheck-mode)
 
 (show-paren-mode 1)
 (global-linum-mode 1)
@@ -42,6 +42,9 @@
 (global-set-key (kbd "C-x C-h") (lambda() (interactive)(find-file "/home/kim/")))
 (global-set-key (kbd "C-x C-r") (lambda() (interactive)(find-file "/")))
 
+(global-set-key [S-dead-grave] "`")
+(global-set-key [S-dead-acute] "`")
+
 
 (require 'erlang-start)
 
@@ -59,7 +62,8 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)) 
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode)) 
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) 
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.handlebars?\\'" . web-mode))
 
 (defun my-setup-php ()
   ;; enable web mode
@@ -69,7 +73,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.php$" . my-setup-php))
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
 
 
 ;; LaTeX configuration
@@ -115,4 +119,180 @@
 ;; Setting up writegood-mode
 ;;(require 'writegood-mode)
 ;;(global-set-key (kbd "C-1") 'writegood-mode)
+
+
+(defun toggle-maximize-buffer () "Maximize buffer"
+  (interactive)
+  (if (= 1 (length (window-list)))
+      (jump-to-register '_) 
+    (progn
+      (window-configuration-to-register '_)
+      (delete-other-windows))))
+
+(global-set-key (kbd "C-c ?") 'toggle-maximize-buffer) 
+
+(defun shell-mode-hook () (interactive)
+      (local-set-key (kbd "C-c l") 'erase-buffer))
+
+(defun tilde () (interactive) (insert "~"))
+
+(global-set-key (kbd "M-C-¨") 'tilde) 
+
+
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+
+;; disable the gui.  Who uses emacs for toolbars and menus?
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(setq menu-prompting nil)
+
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
+
+; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
+(defun rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn
+          (rename-file name new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil))))))
+
+(global-set-key (kbd "C-c n") 'rename-file-and-buffer)
+
+
+;; move buffer
+(defun move-buffer-file (dir)
+  "Moves both current buffer and file it's visiting to DIR."
+  (interactive "DNew directory: ")
+  (let* ((name (buffer-name))
+	 (filename (buffer-file-name))
+	 (dir
+	  (if (string-match dir "\\(?:/\\|\\\\)$")
+	      (substring dir 0 -1) dir))
+	 (newname (concat dir "/" name)))
+    (if (not filename)
+	(message "Buffer '%s' is not visiting a file!" name)
+	(progn (copy-file filename newname 1)
+	       (delete-file filename)
+	       (set-visited-file-name newname)
+	       (set-buffer-modified-p nil)
+	       t))))
+
+(global-set-key (kbd "C-c m") 'move-buffer-file)
+
+
+
+(defun revert-all-buffers ()
+  "Refreshes all open buffers from their respective files"
+  (interactive)
+  (mapc (lambda (buffer)
+	  (when (and (buffer-file-name buffer)
+		     (not (buffer-modified-p buffer)))
+	    (set-buffer buffer)
+	    (ignore-errors (revert-buffer t t t))))
+	(buffer-list))
+  (message "Refreshed open files"))
+
+(global-set-key (kbd "C-c q") 'revert-all-buffers)
+
+
+
+(defun close-all-buffer ()
+  "Closes all the buffers."
+  (interactive)
+  (mapc (lambda (buffer) (kill-buffer buffer)) (buffer-list)))
+
+(global-set-key (kbd "C-c ESC") 'close-all-buffer)
+
+
+(defun delete-file-and-buffer ()
+  "Kill the current buffer and deletes the file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (when filename
+      (if (vc-backend filename)
+          (vc-delete-file filename)
+        (progn
+          (delete-file filename)
+          (message "Deleted file %s" filename)
+          (kill-buffer))))))
+
+(global-set-key (kbd "C-c d") 'delete-file-and-buffer)
+
+;;Create necessary dirs automaticly
+(defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
+  "Create parent directory if not exists while visiting file."
+  (unless (file-exists-p filename)
+    (let ((dir (file-name-directory filename)))
+      (unless (file-exists-p dir)
+        (make-directory dir)))))
+
+
+(global-set-key (kbd "<f2>") 'ansi-term)
+
+
+(defun copy-current-file-path ()
+  "Add current file path to kill ring. Limits the filename to project root if possible."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (kill-new (if eproject-mode
+                  (s-chop-prefix (eproject-root) filename)
+                filename))))
+
+(global-set-key (kbd "C-c c") 'copy-current-file-path)
+
+
+
+
+; https://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
+;; I prefer using the "clipboard" selection (the one the
+;; typically is used by c-c/c-v) before the primary selection
+;; (that uses mouse-select/middle-button-click)
+(setq x-select-enable-clipboard t)
+
+;; If emacs is run in a terminal, the clipboard- functions have no
+;; effect. Instead, we use of xsel, see
+;; http://www.vergenet.net/~conrad/software/xsel/ -- "a command-line
+;; program for getting and setting the contents of the X selection"
+(unless window-system
+ (when (getenv "DISPLAY")
+  ;; Callback for when user cuts
+  (defun xsel-cut-function (text &optional push)
+    ;; Insert text to temp-buffer, and "send" content to xsel stdin
+    (with-temp-buffer
+      (insert text)
+      ;; I prefer using the "clipboard" selection (the one the
+      ;; typically is used by c-c/c-v) before the primary selection
+      ;; (that uses mouse-select/middle-button-click)
+      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+  ;; Call back for when user pastes
+  (defun xsel-paste-function()
+    ;; Find out what is current selection by xsel. If it is different
+    ;; from the top of the kill-ring (car kill-ring), then return
+    ;; it. Else, nil is returned, so whatever is in the top of the
+    ;; kill-ring will be used.
+    (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+      (unless (string= (car kill-ring) xsel-output)
+	xsel-output )))
+  ;; Attach callbacks to hooks
+  (setq interprogram-cut-function 'xsel-cut-function)
+  (setq interprogram-paste-function 'xsel-paste-function)
+  ;; Idea from
+  ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
+  ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
+ ))
+
 

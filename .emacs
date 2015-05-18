@@ -1,6 +1,10 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
+
+(require 'package)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
 (package-initialize)
 
 (custom-set-variables
@@ -283,3 +287,28 @@
  ))
 
 
+
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+;; Unbind prelude rename command
+(global-unset-key "\C-cr")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cp" 'org-capture)
+
+
+
+(setq org-capture-templates
+      '(("j" "Journal Entry" plain
+         (file+datetree "/home/kim/Dropbox/org/journal.org")
+         "%U\n\n%?" :empty-lines-before 1)
+	("t" "todo entry in refile " entry (file+headline "/home/kim/Dropbox/org/refile.org" "Tasks")
+    "* TODO %?\n  %i\n  %a" )
+	 ("n" "note" entry (file+headline "/home/kim/Dropbox/org/refile.org" "Notes")
+    "* %?\n  %i\n  %a" )))
+
+
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)

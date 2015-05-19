@@ -32,6 +32,7 @@
 ;;(global-set-key (kbd "C-Z") 'redo)  
 (global-set-key (kbd "C-x C-h") (lambda() (interactive)(find-file "/home/kim/")))
 (global-set-key (kbd "C-x C-r") (lambda() (interactive)(find-file "/")))
+(global-set-key (kbd "<f10>") (lambda() (interactive)(find-file "/home/kim/Dropbox/org/")))
 
 (global-set-key [S-dead-grave] "`")
 (global-set-key [S-dead-acute] "`")
@@ -289,15 +290,45 @@
 
 
 (require 'org)
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+;;(define-key global-map "\C-cl" 'org-store-link)
+;;(define-key global-map "\C-ca" 'org-agenda)
+(global-set-key (kbd "<f12>") 'org-agenda)
+;;(global-set-key (kbd "<f11>") 'org-show-todo-tree org-mode-map)
+(global-set-key (kbd "<f11>") 'org-agenda-list)
 (setq org-log-done t)
-
+(setq org-agenda-files (list "/home/kim/Dropbox/org/refile.org"
+                             "/home/kim/Dropbox/org/class.org"))
 ;; Unbind prelude rename command
-(global-unset-key "\C-cr")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+;;(global-unset-key "\C-cr")
+;;(setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cp" 'org-capture)
 
+
+(defun org-capture-class ()
+  "Capture a class template for org-capture."
+  (cl-labels ((update (date days)
+                      (format-time-string
+                       (car org-time-stamp-formats)
+                       (seconds-to-time (+ (time-to-seconds date)
+                                           (* days 86400))))))
+    (let ((course   (read-string "Course: " nil nil '(nil)))
+          (week     (read-string "Week: " nil nil '(nil)))
+          (lecture  (read-string "Lecture No.: " nil nil '(nil)))
+          (date     (org-read-date nil t))
+          (location (read-string "Location: " nil nil '(nil))))
+      (when (and course week lecture date location)
+        (concat (format "* TODO %s: Week %s Lecture %s\n"
+                        course week lecture)
+                (format "  SCHEDULED: %s\n" (update date 0))
+                (format "  Location: %s %%?\n" location)
+                (format "** TODO %s: prepare lecture %s from week %s\n"
+                        course lecture week)
+                (format "   DEADLINE: %s SCHEDULED: %s\n"
+                        (update date -1) (update date -2))
+                (format "** TODO %s: review lecture %s from week %s\n"
+                        course lecture week)
+                (format "   DEADLINE: %s SCHEDULED: %s\n"
+                        (update date 2) (update date 1)))))))
 
 
 (setq org-capture-templates
@@ -305,10 +336,14 @@
          (file+datetree "/home/kim/Dropbox/org/journal.org")
          "%U\n\n%?" :empty-lines-before 1)
 	("t" "todo entry in refile " entry (file+headline "/home/kim/Dropbox/org/refile.org" "Tasks")
-    "* TODO %?\n  %i\n  %a" )
+    "* TODO %?\n  %i\n" )
 	 ("n" "note" entry (file+headline "/home/kim/Dropbox/org/refile.org" "Notes")
-    "* %?\n  %i\n  %a" )))
-
+    "* %?\n  %i\n" )
+	 ("c" "Class" entry
+      (file "/home/kim/Dropbox/org/class.org")
+      #'org-capture-class)
+     ("e" "Exercise session" entry
+      (file "/home/kim/Dropbox/org/class.org"))))
 
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)

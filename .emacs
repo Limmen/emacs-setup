@@ -78,6 +78,9 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.handlebars?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
 
 (defun my-setup-php ()
   ;; enable web mode
@@ -100,8 +103,21 @@
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
 
+(add-hook 'LaTeX-mode-hook
+          (lambda () (local-set-key (kbd "C-c b") "\textbf{}")))
+(add-hook 'LaTeX-mode-hook
+          (lambda () (local-set-key (kbd "C-c i") "\textit{}")))
+
+(add-hook 'LaTeX-mode-hook
+          (lambda () (local-set-key (kbd "C-c g") "\includegraphics[scale=1]{.png}")))
+
+
+(global-set-key (kbd "<S-dead-circumflex>") "^")
+
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
+
+
 (setq TeX-PDF-mode t)
 
 (setq TeX-output-view-style
@@ -145,9 +161,6 @@
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
 
-(defun tilde () (interactive) (insert "~"))
-
-(global-set-key (kbd "M-C-¨") 'tilde) 
 
 
 (global-set-key (kbd "C-x <up>") 'windmove-up)
@@ -156,9 +169,9 @@
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 
 ;; disable the gui.  Who uses emacs for toolbars and menus?
-;;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-;;(setq menu-prompting nil)
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(setq menu-prompting nil)
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
@@ -253,6 +266,7 @@
 
 
 (global-set-key (kbd "<f2>") 'ansi-term)
+(global-set-key (kbd "<f4>") 'mu4e)
 
 
 (defun copy-current-file-path ()
@@ -493,3 +507,55 @@ smtpmail-debug-info t)
 (add-hook 'term-mode-hook (lambda ()
                             (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
+
+
+
+(require 'tabbar)
+; turn on the tabbar
+(tabbar-mode t)
+; define all tabs to be one of 3 possible groups: “Emacs Buffer”, “Dired”,
+;“User Buffer”.
+
+(defun tabbar-buffer-groups ()
+  "Return the list of group names the current buffer belongs to.
+This function is a custom function for tabbar-mode's tabbar-buffer-groups.
+This function group all buffers into 3 groups:
+Those Dired, those user buffer, and those emacs buffer.
+Emacs buffer are those starting with “*”."
+  (list
+   (cond
+    ((string-equal "*" (substring (buffer-name) 0 1))
+     "Emacs Buffer"
+     )
+    ((eq major-mode 'dired-mode)
+     "Dired"
+     )
+    (t
+     "User Buffer"
+     )
+    ))) 
+
+(setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
+
+
+
+(setq tabbar-background-color "#959A79") ;; the color of the tabbar background
+(custom-set-faces
+ '(tabbar-default ((t (:inherit variable-pitch :background "#959A79" :foreground "black" :weight bold))))
+ '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default))))
+ '(tabbar-highlight ((t (:underline t))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#95CA59"))))
+ '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
+
+
+
+
+
+
+(global-set-key (kbd "<backtab>") 'tabbar-backward)
+(global-set-key [C-tab] 'tabbar-forward)
+(global-set-key (kbd "C-x C-b") 'ibuffer)

@@ -40,6 +40,7 @@
 
 (show-paren-mode 1)
 (global-linum-mode 1)
+(nyan-mode 1)
 
 (add-hook 'term-setup-hook
           (lambda () (define-key input-decode-map "\e[Z" [backtab])))
@@ -559,3 +560,43 @@ Emacs buffer are those starting with “*”."
 (global-set-key (kbd "<backtab>") 'tabbar-backward)
 (global-set-key [C-tab] 'tabbar-forward)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+(setq org-src-fontify-natively t)
+
+
+
+(setq org-startup-indented t)
+(setq org-hide-leading-stars t)
+(setq org-odd-level-only nil) 
+(setq org-insert-heading-respect-content nil)
+(setq org-M-RET-may-split-line '((item) (default . t)))
+(setq org-special-ctrl-a/e t)
+(setq org-return-follows-link nil)
+(setq org-use-speed-commands t)
+(setq org-startup-align-all-tables nil)
+(setq org-log-into-drawer nil)
+(setq org-tags-column 1)
+(setq org-ellipsis " \u25bc" )
+(setq org-speed-commands-user nil)
+(setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+(setq org-completion-use-ido t)
+(setq org-indent-mode t)
+(setq org-startup-truncated nil)
+(setq auto-fill-mode -1)
+(setq-default fill-column 99999)
+(setq fill-column 99999)
+(global-auto-revert-mode t)
+(prefer-coding-system 'utf-8)
+(cua-mode t) ;; keep the cut and paste shortcut keys people are used to.
+
+
+
+(setq org-export-html-style-include-scripts nil
+       org-export-html-style-include-default nil)
+ (setq org-export-html-style
+   "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://thomasf.github.io/solarized-css/solarized-light.min.css\" />")
+
+
+
+

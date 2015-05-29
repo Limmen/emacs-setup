@@ -331,7 +331,7 @@
 (global-set-key (kbd "<f11>") 'org-agenda-list)
 (setq org-log-done t)
 (setq org-agenda-files (list "/home/kim/Dropbox/org/refile.org"
-                             "/home/kim/Dropbox/org/class.org"))
+                             "/home/kim/Dropbox/org/class/class.org"))
 ;; Unbind prelude rename command
 ;;(global-unset-key "\C-cr")
 ;;(setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -367,17 +367,17 @@
 
 (setq org-capture-templates
       '(("j" "Journal Entry" plain
-         (file+datetree "/home/kim/Dropbox/org/journal.org")
+         (file+datetree "/home/kim/Dropbox/org/journal/journal.org")
          "%U\n\n%?" :empty-lines-before 1)
 	("t" "todo entry in refile " entry (file+headline "/home/kim/Dropbox/org/refile.org" "Tasks")
     "* TODO %?\n  %i\n" )
 	 ("n" "note" entry (file+headline "/home/kim/Dropbox/org/refile.org" "Notes")
     "* %?\n  %i\n" )
 	 ("c" "Class" entry
-      (file "/home/kim/Dropbox/org/class.org")
+      (file "/home/kim/Dropbox/org/class/class.org")
       #'org-capture-class)
      ("e" "Exercise session" entry
-      (file "/home/kim/Dropbox/org/class.org"))))
+      (file "/home/kim/Dropbox/org/class/class.org"))))
 
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)

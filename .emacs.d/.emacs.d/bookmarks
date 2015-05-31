@@ -4,7 +4,7 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/org/refile.org")
- (front-context-string . "** TODO Plotting")
- (rear-context-string . "l mode i emacs.\n")
- (position . 40546))
+ (front-context-string . "** ECB\nECB är Em")
+ (rear-context-string . "} = n^2 * \\pi$$\n")
+ (position . 18892))
 )

@@ -15,6 +15,10 @@
 (require 'org)
 (require 'tabbar)
 (require 'ecb-autoloads)
+(require 'ace-jump-mode)
+(require 'ido-vertical-mode)
+(require 'smex)
+(require 'ido-hacks nil t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -85,6 +89,21 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 
+;; (require 'helm-config)
+;; (helm-mode 1)
+;; (setq helm-idle-delay 0.01)
+;; (setq helm-input-idle-delay 0.01)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+;;
+;;(require 'helm-files)
+;;(setq helm-idle-delay 0.1)
+;;(setq helm-input-idle-delay 0.1)
+;;(setq helm-locate-command "locate %s -e -A %s")
+;;(global-set-key (kbd "C-x C-f") 'helm-for-files)
+
 (setq ecb-layout-name "left2")
 
 ; turn on the tabbar
@@ -122,12 +141,15 @@ Emacs buffer are those starting with “*”."
  '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
  '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
+(smex-initialize)
+
 (show-paren-mode 1)
 (global-linum-mode 1)
 (nyan-mode 1)
 (auto-complete-mode 1)
 (global-visual-line-mode t)
 (ido-mode 1)
+(ido-vertical-mode 1)
 (autopair-global-mode) ;; enable autopair in all buffers
 (yas-global-mode 1)
 
@@ -592,5 +614,7 @@ smtpmail-debug-info t)
 (global-set-key (kbd "C-_") 'text-scale-decrease)
 (global-set-key (kbd "M-e") 'apply-macro-to-region-lines)
 (define-key global-map "\C-cp" 'org-capture)
+(define-key global-map (kbd "M-s") 'ace-jump-mode)
+(global-set-key (kbd "M-x") 'smex)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))

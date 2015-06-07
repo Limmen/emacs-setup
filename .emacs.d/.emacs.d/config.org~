@@ -20,9 +20,9 @@
 (require 'org)
 (require 'tabbar)
 (require 'ecb-autoloads)
+(require 'ace-jump-mode)
 #+end_src
 *** LaTeX setup
-**** LaTeX
 #+begin_src emacs-lisp
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -97,8 +97,20 @@
 #+end_src
 **** ido
 #+begin_src emacs-lisp
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
+;;(setq ido-enable-flex-matching t)
+;;(setq ido-everywhere t)
+#+end_src
+**** helm
+#+begin_src emacs-lisp 
+(helm-mode t)
+(helm :sources '(helm-source-findutils
+                 helm-source-recentf
+                 helm-source-bookmarks
+                 helm-source-buffers-list
+                 helm-source-google-suggest
+                 helm-source-locate
+                 helm-source-ls-git))
+;;      :buffer "*helm all the things*")
 #+end_src
 **** ecb
 #+begin_src emacs-lisp
@@ -148,7 +160,7 @@ Emacs buffer are those starting with “*”."
 (nyan-mode 1)
 (auto-complete-mode 1)
 (global-visual-line-mode t)
-(ido-mode 1)
+;;(ido-mode 1)
 (autopair-global-mode) ;; enable autopair in all buffers
 (yas-global-mode 1)
 #+end_src emacs-lisp
@@ -186,6 +198,10 @@ Emacs buffer are those starting with “*”."
 #+end_src
 *** Regular emacs settings
 #+begin_src emacs-lisp
+
+;;ditaa path
+(setq org-ditaa-jar-path "/usr/bin/ditaa")
+
 ;; disable the gui.  Who uses emacs for toolbars and menus?
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -451,6 +467,62 @@ Emacs buffer are those starting with “*”."
    "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://thomasf.github.io/solarized-css/solarized-light.min.css\" />")
 #+end_src
 
+**** Org-LaTeX
+#+begin_src emacs-lisp
+;; allow for export=>beamer by placing
+
+;; #+LaTeX_CLASS: beamer in org files
+(unless (boundp 'org-export-latex-classes)
+  (setq org-export-latex-classes nil))
+(add-to-list 'org-export-latex-classes
+  ;; beamer class, for presentations
+  '("beamer"
+     "\\documentclass[11pt]{beamer}\n
+      \\mode<{{{beamermode}}}>\n
+      \\usetheme{{{{beamertheme}}}}\n
+      \\usecolortheme{{{{beamercolortheme}}}}\n
+      \\beamertemplateballitem\n
+      \\setbeameroption{show notes}
+      \\usepackage[utf8]{inputenc}\n
+      \\usepackage[T1]{fontenc}\n
+      \\usepackage{hyperref}\n
+      \\usepackage{color}
+      \\usepackage{listings}
+      \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
+  frame=single,
+  basicstyle=\\small,
+  showspaces=false,showstringspaces=false,
+  showtabs=false,
+  keywordstyle=\\color{blue}\\bfseries,
+  commentstyle=\\color{red},
+  }\n
+      \\usepackage{verbatim}\n
+      \\institute{{{{beamerinstitute}}}}\n          
+       \\subject{{{{beamersubject}}}}\n"
+
+     ("\\section{%s}" . "\\section*{%s}")
+     
+     ("\\begin{frame}[fragile]\\frametitle{%s}"
+       "\\end{frame}"
+       "\\begin{frame}[fragile]\\frametitle{%s}"
+       "\\end{frame}")))
+
+  ;; letter class, for formal letters
+
+  (add-to-list 'org-export-latex-classes
+
+  '("letter"
+     "\\documentclass[11pt]{letter}\n
+      \\usepackage[utf8]{inputenc}\n
+      \\usepackage[T1]{fontenc}\n
+      \\usepackage{color}"
+     
+     ("\\section{%s}" . "\\section*{%s}")
+     ("\\subsection{%s}" . "\\subsection*{%s}")
+     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+#+end_src
 *** Email setup
 #+begin_src emacs-lisp
 
@@ -577,6 +649,7 @@ smtpmail-debug-info t)
 (global-set-key (kbd "C-_") 'text-scale-decrease)
 (global-set-key (kbd "M-e") 'apply-macro-to-region-lines)
 (define-key global-map "\C-cp" 'org-capture)
+(define-key global-map (kbd "M-s") 'ace-jump-mode)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
 

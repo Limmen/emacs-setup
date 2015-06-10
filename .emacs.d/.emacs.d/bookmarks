@@ -4,7 +4,7 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/org/refile.org")
- (front-context-string . "** TODO More ema")
- (rear-context-string . "viewer i emacs.\n")
- (position . 23225))
+ (front-context-string . "** TODO Emacs re")
+ (rear-context-string . "som krig gör :)\n")
+ (position . 23775))
 )

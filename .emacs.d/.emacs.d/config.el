@@ -143,6 +143,8 @@ Emacs buffer are those starting with “*”."
 
 (smex-initialize)
 
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-complete-lisp-symbol-partially try-complete-lisp-symbol))
+
 (show-paren-mode 1)
 (global-linum-mode 1)
 (nyan-mode 1)
@@ -616,5 +618,8 @@ smtpmail-debug-info t)
 (define-key global-map "\C-cp" 'org-capture)
 (define-key global-map (kbd "M-s") 'ace-jump-mode)
 (global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x G") 'magit-status)
+;;(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "§") 'hippie-expand)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))

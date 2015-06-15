@@ -13,6 +13,7 @@
 #+begin_src emacs-lisp
 (require 'flycheck)
 (require 'erlang-start)
+(require 'auto-complete)
 (require 'yasnippet)
 (require 'autopair)
 (require 'web-mode)
@@ -21,6 +22,16 @@
 (require 'tabbar)
 (require 'ecb-autoloads)
 (require 'ace-jump-mode)
+(require 'ido-vertical-mode)
+(require 'smex)
+(require 'ido-hacks nil t)
+#+end_src
+*** load
+#+begin_src emacs-lisp
+;; Tell emacs where is your personal elisp lib dir
+(add-to-list 'load-path "~/.emacs.d/extra/")
+
+(load "auto-java-complete/ajc-java-complete") ;; best not to include the ending “.el” or “.elc”
 #+end_src
 *** LaTeX setup
 #+begin_src emacs-lisp
@@ -97,20 +108,25 @@
 #+end_src
 **** ido
 #+begin_src emacs-lisp
-;;(setq ido-enable-flex-matching t)
-;;(setq ido-everywhere t)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 #+end_src
 **** helm
 #+begin_src emacs-lisp 
-(helm-mode t)
-(helm :sources '(helm-source-findutils
-                 helm-source-recentf
-                 helm-source-bookmarks
-                 helm-source-buffers-list
-                 helm-source-google-suggest
-                 helm-source-locate
-                 helm-source-ls-git))
-;;      :buffer "*helm all the things*")
+;; (require 'helm-config)
+;; (helm-mode 1)
+;; (setq helm-idle-delay 0.01)
+;; (setq helm-input-idle-delay 0.01)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+;;
+;;(require 'helm-files)
+;;(setq helm-idle-delay 0.1)
+;;(setq helm-input-idle-delay 0.1)
+;;(setq helm-locate-command "locate %s -e -A %s")
+;;(global-set-key (kbd "C-x C-f") 'helm-for-files)
 #+end_src
 **** ecb
 #+begin_src emacs-lisp
@@ -153,6 +169,28 @@ Emacs buffer are those starting with “*”."
  '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
  '(tabbar-unselected ((t (:inherit tabbar-default)))))
 #+end_src
+**** smex
+#+begin_src emacs-lisp
+(smex-initialize)
+#+end_src
+**** hippie-expand
+#+begin_src emacs-lisp
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-complete-lisp-symbol-partially try-complete-lisp-symbol))
+#+end_src
+**** auto-complete
+#+begin_src emacs-lisp
+(ac-config-default)
+(setq ac-use-menu-map t)
+#+end_src
+**** java auto-complete
+#+begin_src emacs-lisp
+(require 'ajc-java-complete-config)
+(add-hook 'java-mode-hook 'ajc-java-complete-mode)
+(add-to-list 'ac-modes 'java-mode)
+(local-set-key (kbd "C-c i") (quote ajc-import-all-unimported-class))
+     (local-set-key (kbd "C-c m") (quote ajc-import-class-under-point))
+
+#+end_src
 *** Default modes
 #+begin_src emacs-lisp
 (show-paren-mode 1)
@@ -160,9 +198,11 @@ Emacs buffer are those starting with “*”."
 (nyan-mode 1)
 (auto-complete-mode 1)
 (global-visual-line-mode t)
-;;(ido-mode 1)
+(ido-mode 1)
+(ido-vertical-mode 1)
 (autopair-global-mode) ;; enable autopair in all buffers
 (yas-global-mode 1)
+(global-auto-complete-mode t)
 #+end_src emacs-lisp
 **** More default configuration.
 #+begin_src emacs-lisp
@@ -650,6 +690,10 @@ smtpmail-debug-info t)
 (global-set-key (kbd "M-e") 'apply-macro-to-region-lines)
 (define-key global-map "\C-cp" 'org-capture)
 (define-key global-map (kbd "M-s") 'ace-jump-mode)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x G") 'magit-status)
+;;(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "§") 'hippie-expand)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
 

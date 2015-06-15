@@ -1,18 +1,52 @@
 
 ;; ----- smex-history -----
 (
- ecb-activate
- erc
  list-packages
- cd
- 5x5
- arp
- dbx
+ gnuplot-mode
+ org-publish-project
+ org-replace-region-by-html
+ org-display-outline-path
+ org-plot/gnuplot
+ start-eclimd
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 2)
+ (list-packages . 16)
  (erc . 1)
  (ecb-activate . 1)
+ (sort-lines . 2)
+ (eclim-java-import . 13)
+ (eclim-mode . 2)
+ (eclim-problems . 3)
+ (auto-java-complete-reload . 3)
+ (c-java-menu . 1)
+ (start-eclimd . 15)
+ (eclim-complete . 1)
+ (eclim-run-class . 1)
+ (stop-eclimd . 3)
+ (eclim-java-constructor . 2)
+ (eclim-project-create . 3)
+ (eclim-run-java-doc . 1)
+ (eclim-java-doc-comment . 1)
+ (eclim-java-generate-getter-and-setter . 1)
+ (eclim-java-import-organize . 9)
+ (make-directory . 2)
+ (yas-new-snippet . 3)
+ (yas-visit-snippet-file . 1)
+ (snippet-mode . 1)
+ (yas/abort-snippet . 1)
+ (magit-init . 1)
+ (shrink-window-horizontally . 2)
+ (shrink-window . 1)
+ (shrink-window-if-larger-than-buffer . 1)
+ (enlarge-window . 1)
+ (whitespace-mode . 6)
+ (imenu . 3)
+ (gnuplot-mode . 2)
+ (org-plot/gnuplot . 3)
+ (org-display-outline-path . 1)
+ (org-replace-region-by-html . 1)
+ (org-publish-project . 1)
+ (gnuplot-send-buffer-to-gnuplot . 1)
 )

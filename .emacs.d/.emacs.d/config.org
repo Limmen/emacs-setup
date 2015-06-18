@@ -229,12 +229,8 @@ Emacs buffer are those starting with “*”."
 (ido-vertical-mode 1)
 (autopair-global-mode) ;; enable autopair in all buffers
 (yas-global-mode 1)
-(global-auto-complete-mode t)
+;;(global-auto-complete-mode t)
 (global-eclim-mode)
-
-(define-globalized-minor-mode
- global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode t)
 #+end_src emacs-lisp
 **** More default configuration.
 #+begin_src emacs-lisp
@@ -861,6 +857,7 @@ smtpmail-debug-info t)
 (global-set-key (kbd "<f5>") 'goto-line)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (global-set-key  (kbd "C-M-g") 'org-plot/gnuplot)
+(global-set-key  (kbd "C-§") 'auto-complete-mode)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
 

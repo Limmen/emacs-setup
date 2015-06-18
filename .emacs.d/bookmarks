@@ -4,7 +4,7 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/org/refile.org")
- (front-context-string . "** TODO Google s")
- (rear-context-string . "g inför den 6e.\n")
- (position . 41229))
+ (front-context-string . "** TODO Hacker-m")
+ (rear-context-string . "DO Learn Python\n")
+ (position . 24639))
 )

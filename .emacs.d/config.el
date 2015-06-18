@@ -8,12 +8,29 @@
 
 (require 'flycheck)
 (require 'erlang-start)
+(require 'auto-complete)
+(require 'auto-complete-config)
 (require 'yasnippet)
 (require 'autopair)
 (require 'web-mode)
 (require 'ibuffer)
 (require 'org)
 (require 'tabbar)
+(require 'ecb-autoloads)
+(require 'ace-jump-mode)
+(require 'ido-vertical-mode)
+(require 'smex)
+(require 'ido-hacks nil t)
+(require 'eclim)
+(require 'eclimd)
+(require 'ac-emacs-eclim-source)
+(require 'company)
+(require 'company-emacs-eclim)
+(require 'fill-column-indicator)
+(require 'python-mode)
+(require 'gnuplot-mode)
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -77,10 +94,29 @@
 
 (add-hook 'js-mode-hook
           (lambda () (flycheck-mode t)))
+
 (add-hook 'term-setup-hook
           (lambda () (define-key input-decode-map "\e[Z" [backtab])))
+
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
+
+;; (require 'helm-config)
+;; (helm-mode 1)
+;; (setq helm-idle-delay 0.01)
+;; (setq helm-input-idle-delay 0.01)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+;;
+;;(require 'helm-files)
+;;(setq helm-idle-delay 0.1)
+;;(setq helm-input-idle-delay 0.1)
+;;(setq helm-locate-command "locate %s -e -A %s")
+;;(global-set-key (kbd "C-x C-f") 'helm-for-files)
+
+(setq ecb-layout-name "left2")
 
 ; turn on the tabbar
 (tabbar-mode t)
@@ -117,16 +153,52 @@ Emacs buffer are those starting with “*”."
  '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
  '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
+(smex-initialize)
+
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-complete-lisp-symbol-partially try-complete-lisp-symbol))
+
+(ac-config-default)
+(setq ac-use-menu-map t)
+
+(ac-emacs-eclim-config)
+(setq eclim-auto-save t)
+(global-eclim-mode)
+
+(company-emacs-eclim-setup)
+(global-company-mode t)
+
+; use IPython
+(setq-default py-shell-name "ipython")
+(setq-default py-which-bufname "IPython")
+; use the wx backend, for both mayavi and matplotlib
+(setq py-python-command-args
+  '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+(setq py-force-py-shell-name-p t)
+
+; switch to the interpreter after executing code
+(setq py-shell-switch-buffers-on-execute-p t)
+(setq py-switch-buffers-on-execute-p t)
+; don't split windows
+(setq py-split-windows-on-execute-p nil)
+; try to automagically figure out indentation
+(setq py-smart-indentation t)
+
 (show-paren-mode 1)
 (global-linum-mode 1)
 (nyan-mode 1)
 (auto-complete-mode 1)
 (global-visual-line-mode t)
 (ido-mode 1)
+(ido-vertical-mode 1)
 (autopair-global-mode) ;; enable autopair in all buffers
 (yas-global-mode 1)
+;;(global-auto-complete-mode t)
+(global-eclim-mode)
 
-(setq-default indent-tabs-mode t)
+;;(setq-default indent-tabs-mode t)
+
+;; make indentation commands use space only (never tab character)
+(setq-default indent-tabs-mode nil) ; emacs 23.1, 24.2, default to t
 (setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -154,6 +226,9 @@ Emacs buffer are those starting with “*”."
       (window-configuration-to-register '_)
       (delete-other-windows))))
 
+;;ditaa path
+(setq org-ditaa-jar-path "/usr/bin/ditaa")
+
 ;; disable the gui.  Who uses emacs for toolbars and menus?
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -166,6 +241,9 @@ Emacs buffer are those starting with “*”."
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;; Always ask for y/n keypress instead of typing out 'yes' or 'no'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (setq default-frame-alist (append (list 
   '(width  . 81)  ; Width set to 81 characters 
   '(height . 40)) ; Height set to 60 lines 
@@ -177,7 +255,64 @@ Emacs buffer are those starting with “*”."
 (setq auto-save-default         nil) ; Don't want any auto saving 
 
 (setq search-highlight           t) ; Highlight search object 
-(setq query-replace-highlight    t) ; Highlight query object
+(setq query-replace-highlight    t) ; Highlight query object 
+
+; number of characters until the fill column
+(setq fill-column 70)
+
+; specify the fringe width for windows -- this sets both the left and
+; right fringes to 10
+(require 'fringe)
+(fringe-mode 10)
+
+; lines which are exactly as wide as the window (not counting the
+; final newline character) are not continued. Instead, when point is
+; at the end of the line, the cursor appears in the right fringe.
+(setq overflow-newline-into-fringe t)
+
+; each line of text gets one line on the screen (i.e., text will run
+; off the left instead of wrapping around onto a new line)
+(setq truncate-lines t)
+; truncate lines even in partial-width windows
+(setq truncate-partial-width-windows t)
+
+; display line numbers to the right of the window
+(global-linum-mode t)
+; show the current line and column numbers in the stats bar as well
+(line-number-mode t)
+(column-number-mode t)
+
+; highlight the current line
+(require 'highlight-current-line)
+(global-hl-line-mode t)
+(setq highlight-current-line-globally t)
+(setq highlight-current-line-high-faces nil)
+(setq highlight-current-line-whole-line nil)
+(setq hl-line-face (quote highlight))
+
+; make sure transient mark mode is enabled (it should be by default,
+; but just in case)
+(transient-mark-mode t)
+
+; turn on mouse wheel support for scrolling
+(require 'mwheel)
+(mouse-wheel-mode t)
+
+;-------------------------;
+;;; Syntax Highlighting ;;;
+;-------------------------;
+
+; text decoration
+(require 'font-lock)
+(setq font-lock-maximum-decoration t)
+(global-font-lock-mode t)
+(global-hi-lock-mode nil)
+(setq jit-lock-contextually t)
+(setq jit-lock-stealth-verbose t)
+
+; if there is size information associated with text, change the text
+; size to reflect it
+(size-indication-mode t)
 
 ; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun rename-file-and-buffer (new-name)
@@ -294,6 +429,54 @@ Emacs buffer are those starting with “*”."
    (shell (get-buffer-create "*shell-commands-buf*"))
    (process-send-string (get-buffer-process "*shell-commands-buf*") (concat cmd "\n")))
 
+(defun ido-goto-symbol (&optional symbol-list)
+      "Refresh imenu and jump to a place in the buffer using Ido."
+      (interactive)
+      (unless (featurep 'imenu)
+        (require 'imenu nil t))
+      (cond
+       ((not symbol-list)
+        (let ((ido-mode ido-mode)
+              (ido-enable-flex-matching
+               (if (boundp 'ido-enable-flex-matching)
+                   ido-enable-flex-matching t))
+              name-and-pos symbol-names position)
+          (unless ido-mode
+            (ido-mode 1)
+            (setq ido-enable-flex-matching t))
+          (while (progn
+                   (imenu--cleanup)
+                   (setq imenu--index-alist nil)
+                   (ido-goto-symbol (imenu--make-index-alist))
+                   (setq selected-symbol
+                         (ido-completing-read "Symbol? " symbol-names))
+                   (string= (car imenu--rescan-item) selected-symbol)))
+          (unless (and (boundp 'mark-active) mark-active)
+            (push-mark nil t nil))
+          (setq position (cdr (assoc selected-symbol name-and-pos)))
+          (cond
+           ((overlayp position)
+            (goto-char (overlay-start position)))
+           (t
+            (goto-char position)))))
+       ((listp symbol-list)
+        (dolist (symbol symbol-list)
+          (let (name position)
+            (cond
+             ((and (listp symbol) (imenu--subalist-p symbol))
+              (ido-goto-symbol symbol))
+             ((listp symbol)
+              (setq name (car symbol))
+              (setq position (cdr symbol)))
+             ((stringp symbol)
+              (setq name symbol)
+              (setq position
+                    (get-text-property 1 'org-imenu-marker symbol))))
+            (unless (or (null position) (null name)
+                        (string= (car imenu--rescan-item) name))
+              (add-to-list 'symbol-names name)
+              (add-to-list 'name-and-pos (cons name position))))))))
+
 ; https://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
 ;; I prefer using the "clipboard" selection (the one the
 ;; typically is used by c-c/c-v) before the primary selection
@@ -405,6 +588,74 @@ Emacs buffer are those starting with “*”."
        org-export-html-style-include-default nil)
  (setq org-export-html-style
    "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://thomasf.github.io/solarized-css/solarized-light.min.css\" />")
+
+;; allow for export=>beamer by placing
+
+;; #+LaTeX_CLASS: beamer in org files
+(unless (boundp 'org-export-latex-classes)
+  (setq org-export-latex-classes nil))
+(add-to-list 'org-export-latex-classes
+  ;; beamer class, for presentations
+  '("beamer"
+     "\\documentclass[11pt]{beamer}\n
+      \\mode<{{{beamermode}}}>\n
+      \\usetheme{{{{beamertheme}}}}\n
+      \\usecolortheme{{{{beamercolortheme}}}}\n
+      \\beamertemplateballitem\n
+      \\setbeameroption{show notes}
+      \\usepackage[utf8]{inputenc}\n
+      \\usepackage[T1]{fontenc}\n
+      \\usepackage{hyperref}\n
+      \\usepackage{color}
+      \\usepackage{listings}
+      \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
+  frame=single,
+  basicstyle=\\small,
+  showspaces=false,showstringspaces=false,
+  showtabs=false,
+  keywordstyle=\\color{blue}\\bfseries,
+  commentstyle=\\color{red},
+  }\n
+      \\usepackage{verbatim}\n
+      \\institute{{{{beamerinstitute}}}}\n          
+       \\subject{{{{beamersubject}}}}\n"
+
+     ("\\section{%s}" . "\\section*{%s}")
+     
+     ("\\begin{frame}[fragile]\\frametitle{%s}"
+       "\\end{frame}"
+       "\\begin{frame}[fragile]\\frametitle{%s}"
+       "\\end{frame}")))
+
+  ;; letter class, for formal letters
+
+  (add-to-list 'org-export-latex-classes
+
+  '("letter"
+     "\\documentclass[11pt]{letter}\n
+      \\usepackage[utf8]{inputenc}\n
+      \\usepackage[T1]{fontenc}\n
+      \\usepackage{color}"
+     
+     ("\\section{%s}" . "\\section*{%s}")
+     ("\\subsection{%s}" . "\\subsection*{%s}")
+     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((gnuplot . t)
+ (js . t)
+ (calc . t)
+ (C . t)
+ (sh . t)
+ (python . t)
+ (java . t)
+ (latex . t)
+ (ditaa . t)))
+;; add additional languages with '((language . t)))
 
 ;;Configure Outbound Mail
 ;;Tell the program who you are
@@ -523,13 +774,23 @@ smtpmail-debug-info t)
 (global-set-key (kbd "<backtab>") 'tabbar-backward)
 (global-set-key [C-tab] 'tabbar-forward)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-?") 'text-scale-increase)
+(global-set-key (kbd "C-_") 'text-scale-decrease)
+(global-set-key (kbd "M-e") 'apply-macro-to-region-lines)
 (define-key global-map "\C-cp" 'org-capture)
+(define-key global-map (kbd "M-s") 'ace-jump-mode)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x G") 'magit-status)
+(global-set-key (kbd "C-S-i") 'eclim-java-import-organize)
+(global-set-key (kbd "C-c l") 'eclim-problems)
+(global-set-key (kbd "C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-+") 'enlarge-window)
+(global-set-key (kbd "C--") 'shrink-window)
+(global-set-key (kbd "§") 'hippie-expand)
+(global-set-key (kbd "<f5>") 'goto-line)
+(global-set-key (kbd "M-i") 'ido-goto-symbol)
+(global-set-key  (kbd "C-M-g") 'org-plot/gnuplot)
+(global-set-key  (kbd "C-§") 'auto-complete-mode)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
-
-(global-set-key
- [f3]
- (lambda ()
-   (interactive)
-   (ispell-change-dictionary "english")))
-(global-set-key [f2] 'flyspell-mode)

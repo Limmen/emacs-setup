@@ -41,7 +41,7 @@
  '(TeX-modes (quote (tex-mode plain-tex-mode texinfo-mode latex-mode doctex-mode)))
  '(ansi-color-names-vector ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
  '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (monokai)))
+; '(custom-enabled-themes (quote (monokai)))
  '(custom-safe-themes (quote ("f0d8af755039aa25cd0792ace9002ba885fd14ac8e8807388ab00ec84c9497d7" "a041a61c0387c57bb65150f002862ebcfe41135a3e3425268de24200b82d6ec9" "6a9606327ecca6e772fba6ef46137d129e6d1888dcfc65d0b9b27a7a00a4af20" default)))
  '(fci-rule-color "#49483E")
  '(highlight-changes-colors ("#FD5FF0" "#AE81FF"))
@@ -157,8 +157,8 @@ Emacs buffer are those starting with “*”."
 
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-complete-lisp-symbol-partially try-complete-lisp-symbol))
 
-(ac-config-default)
-(setq ac-use-menu-map t)
+;;(ac-config-default)
+;;(setq ac-use-menu-map t)
 
 (ac-emacs-eclim-config)
 (setq eclim-auto-save t)
@@ -186,7 +186,7 @@ Emacs buffer are those starting with “*”."
 (show-paren-mode 1)
 (global-linum-mode 1)
 (nyan-mode 1)
-(auto-complete-mode 1)
+;;(auto-complete-mode 1)
 (global-visual-line-mode t)
 (ido-mode 1)
 (ido-vertical-mode 1)
@@ -313,6 +313,8 @@ Emacs buffer are those starting with “*”."
 ; if there is size information associated with text, change the text
 ; size to reflect it
 (size-indication-mode t)
+
+;;'(custom-enabled-themes (quote (solarized-dark)))
 
 ; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun rename-file-and-buffer (new-name)
@@ -587,7 +589,9 @@ Emacs buffer are those starting with “*”."
 (setq org-export-html-style-include-scripts nil
        org-export-html-style-include-default nil)
  (setq org-export-html-style
-   "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://thomasf.github.io/solarized-css/solarized-light.min.css\" />")
+   "<link rel=\"stylesheet\" type=\"text/css\"
+href=\"/home/kim/Dropbox/org/solarized-light.css\"
+ />")
 
 ;; allow for export=>beamer by placing
 
@@ -791,6 +795,6 @@ smtpmail-debug-info t)
 (global-set-key (kbd "<f5>") 'goto-line)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (global-set-key  (kbd "C-M-g") 'org-plot/gnuplot)
-(global-set-key  (kbd "C-§") 'auto-complete-mode)
+(global-set-key  (kbd "C-§") auto-complete-mode)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))

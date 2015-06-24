@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ web-mode
+ js-mode
+ yas-new-snippet
+ load-theme
  list-packages
- gnuplot-mode
- org-publish-project
- org-replace-region-by-html
- org-display-outline-path
- org-plot/gnuplot
- start-eclimd
+ yas/abort-snippet
+ javascript-mode
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 16)
+ (list-packages . 17)
  (erc . 1)
  (ecb-activate . 1)
  (sort-lines . 2)
@@ -32,10 +32,10 @@
  (eclim-java-generate-getter-and-setter . 1)
  (eclim-java-import-organize . 9)
  (make-directory . 2)
- (yas-new-snippet . 3)
+ (yas-new-snippet . 8)
  (yas-visit-snippet-file . 1)
  (snippet-mode . 1)
- (yas/abort-snippet . 1)
+ (yas/abort-snippet . 3)
  (magit-init . 1)
  (shrink-window-horizontally . 2)
  (shrink-window . 1)
@@ -49,4 +49,8 @@
  (org-replace-region-by-html . 1)
  (org-publish-project . 1)
  (gnuplot-send-buffer-to-gnuplot . 1)
+ (javascript-mode . 1)
+ (load-theme . 8)
+ (web-mode . 17)
+ (js-mode . 2)
 )

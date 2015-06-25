@@ -29,6 +29,7 @@
 (require 'fill-column-indicator)
 (require 'python-mode)
 (require 'gnuplot-mode)
+(require 'dired+)
 
 
 
@@ -313,6 +314,8 @@ Emacs buffer are those starting with “*”."
 ; if there is size information associated with text, change the text
 ; size to reflect it
 (size-indication-mode t)
+
+(setq dired-listing-switches "-Al --si --time-style long-iso")
 
 ;;'(custom-enabled-themes (quote (solarized-dark)))
 
@@ -658,6 +661,7 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
  (python . t)
  (java . t)
  (latex . t)
+(erlang . t)
  (ditaa . t)))
 ;; add additional languages with '((language . t)))
 

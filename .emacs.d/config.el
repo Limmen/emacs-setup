@@ -661,7 +661,7 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
  (python . t)
  (java . t)
  (latex . t)
-(erlang . t)
+;;(erlang . t)
  (ditaa . t)))
 ;; add additional languages with '((language . t)))
 

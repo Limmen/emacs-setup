@@ -12,7 +12,7 @@
 
 ;; ----- smex-data -----
 (
- (list-packages . 18)
+ (list-packages . 19)
  (erc . 1)
  (ecb-activate . 1)
  (sort-lines . 2)

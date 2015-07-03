@@ -13,6 +13,7 @@
 #+begin_src emacs-lisp
 (require 'flycheck)
 (require 'erlang-start)
+(require 'erlang-mode)
 (require 'auto-complete)
 (require 'auto-complete-config)
 (require 'yasnippet)
@@ -34,7 +35,7 @@
 (require 'fill-column-indicator)
 (require 'python-mode)
 (require 'gnuplot-mode)
-(require 'diredp)
+(require 'dired+)
 #+end_src
 *** load
 #+begin_src emacs-lisp
@@ -253,7 +254,6 @@ Emacs buffer are those starting with “*”."
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.handlebars?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
 
 (defun my-setup-php ()
   ;; enable web mode
@@ -830,6 +830,7 @@ smtpmail-debug-info t)
 (global-set-key [S-dead-grave] "`")
 (global-set-key [S-dead-acute] "`")
 (global-set-key (kbd "<S-dead-circumflex>") "^")
+(global-set-key (kbd "<dead-tilde>") "~")
 (global-set-key (kbd "C-x <up>") 'windmove-up)
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 (global-set-key (kbd "C-x <right>") 'windmove-right)
@@ -869,7 +870,9 @@ smtpmail-debug-info t)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (global-set-key  (kbd "C-M-g") 'org-plot/gnuplot)
 (global-set-key  (kbd "C-§") auto-complete-mode)
+(global-set-key  (kbd "return") newline-and-indent)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
 
 #+end_src emacs-lisp
+

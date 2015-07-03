@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
+ erlang-mode
+ newline-and-indent
+ erc
+ erlang-shell
  list-packages
  org-babel-execute-src-block
  tetris
- web-mode
- js-mode
- yas-new-snippet
- load-theme
 )
 
 ;; ----- smex-data -----
 (
  (list-packages . 19)
- (erc . 1)
+ (erc . 2)
  (ecb-activate . 1)
  (sort-lines . 2)
  (eclim-java-import . 13)
@@ -55,4 +55,8 @@
  (js-mode . 2)
  (tetris . 1)
  (org-babel-execute-src-block . 1)
+ (erlang-mode . 2)
+ (erlang-shell . 12)
+ (erlang-shell-mode . 1)
+ (newline-and-indent . 1)
 )

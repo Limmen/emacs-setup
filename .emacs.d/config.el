@@ -30,6 +30,7 @@
 (require 'python-mode)
 (require 'gnuplot-mode)
 (require 'dired+)
+(require 'figlet)
 
 
 
@@ -664,6 +665,14 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
  (ditaa . t)))
 ;; add additional languages with '((language . t)))
 
+(add-hook 'org-mode-hook
+          (lambda ()
+(local-set-key (kbd "C-1") (lambda()
+                               (interactive)
+                               (show-all)
+                               (artist-mode)))
+     ))
+
 ;;Configure Outbound Mail
 ;;Tell the program who you are
 (setq user-full-name "Kim Hammar")
@@ -751,6 +760,53 @@ smtpmail-debug-info t)
 ;;     smtpmail-smtp-server "smtp.gmail.com"
 ;;     smtpmail-smtp-service 587)
 
+;;; integrate ido with artist-mode
+   (defun artist-ido-select-operation (type)
+     "Use ido to select a drawing operation in artist-mode"
+     (interactive (list (ido-completing-read "Drawing operation: " 
+                                             (list "Pen" "Pen Line" "line" "straight line" "rectangle" 
+                                                   "square" "poly-line" "straight poly-line" "ellipse" 
+                                                   "circle" "text see-thru" "text-overwrite" "spray-can" 
+                                                   "erase char" "erase rectangle" "vaporize line" "vaporize lines" 
+                                                   "cut rectangle" "cut square" "copy rectangle" "copy square" 
+                                                   "paste" "flood-fill"))))
+     (artist-select-operation type))
+
+
+(defun artist-ido-select-settings (type)
+     "Use ido to select a setting to change in artist-mode"
+     (interactive (list (ido-completing-read "Setting: " 
+                                             (list "Set Fill" "Set Line" "Set Erase" "Spray-size" "Spray-chars" 
+                                                   "Rubber-banding" "Trimming" "Borders"))))
+     (if (equal type "Spray-size") 
+       (artist-select-operation "spray set size")
+       (call-interactively (artist-fc-get-fn-from-symbol 
+                            (cdr (assoc type '(("Set Fill" . set-fill)
+                                               ("Set Line" . set-line)
+                                               ("Set Erase" . set-erase)
+                                               ("Rubber-banding" . rubber-band)
+                                               ("Trimming" . trimming)
+                                               ("Borders" . borders)
+                                               ("Spray-chars" . spray-chars))))))))
+
+(add-hook 'artist-mode-init-hook 
+             (lambda ()
+               (define-key artist-mode-map (kbd "C-c C-a C-o") 'artist-ido-select-operation)
+               (define-key artist-mode-map (kbd "C-c C-a C-c") 'artist-ido-select-settings)))
+
+
+(add-hook 'artist-mode-hook
+          (lambda ()
+        (local-set-key (kbd "C-1") (lambda()
+                                                (interactive)
+                                    (org-mode)
+                                                (show-all)))
+            (local-set-key (kbd "C-2") 'artist-select-op-erase-char) ; f2 = pen mode
+        (local-set-key (kbd "C-3") 'artist-select-op-line)     ; f3 = line
+            (local-set-key (kbd "C-4") 'artist-select-op-square)   ; f4 = rectangle
+            (local-set-key (kbd "C-5") 'artist-select-op-text-see-thru)  ; f5 = ellipse
+     ))
+
 (global-set-key (kbd "M-d") 'backward-kill-word)
 (global-set-key (kbd "C-d") 'delete-backward-char)
 (global-set-key (kbd "C-z") 'undo) 
@@ -803,3 +859,7 @@ smtpmail-debug-info t)
 (global-set-key  (kbd "RET") 'newline-and-indent)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
+(global-set-key (kbd "C-1") (lambda()
+                               (interactive)
+                               (show-all)
+                               (artist-mode)))

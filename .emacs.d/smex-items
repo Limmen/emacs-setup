@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- erlang-mode
- newline-and-indent
- erc
- erlang-shell
+ figlet
+ autopair-mode
  list-packages
- org-babel-execute-src-block
- tetris
+ artist-mode
+ org-plot/gnuplot
+ gnuplot-run-buffer
+ gnuplot-compile
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 19)
+ (list-packages . 21)
  (erc . 2)
  (ecb-activate . 1)
  (sort-lines . 2)
@@ -43,12 +43,12 @@
  (enlarge-window . 1)
  (whitespace-mode . 6)
  (imenu . 3)
- (gnuplot-mode . 2)
- (org-plot/gnuplot . 3)
+ (gnuplot-mode . 4)
+ (org-plot/gnuplot . 5)
  (org-display-outline-path . 1)
  (org-replace-region-by-html . 1)
  (org-publish-project . 1)
- (gnuplot-send-buffer-to-gnuplot . 1)
+ (gnuplot-send-buffer-to-gnuplot . 3)
  (javascript-mode . 1)
  (load-theme . 8)
  (web-mode . 17)
@@ -59,4 +59,11 @@
  (erlang-shell . 12)
  (erlang-shell-mode . 1)
  (newline-and-indent . 1)
+ (org-mode . 2)
+ (gnuplot-compile . 2)
+ (gnuplot-run-buffer . 1)
+ (gnuplot-mode-menu . 1)
+ (artist-mode . 5)
+ (figlet . 18)
+ (autopair-mode . 1)
 )

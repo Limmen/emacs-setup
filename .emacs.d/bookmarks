@@ -4,7 +4,7 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/org/refile.org")
- (front-context-string . "** React Router ")
- (rear-context-string . "-flux/][länk]].\n")
- (position . 16706))
+ (front-context-string . "** ob-browser!\n*")
+ (rear-context-string . " for great good\n")
+ (position . 19094))
 )

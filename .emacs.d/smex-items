@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
- figlet
- autopair-mode
+ mark-page
+ erc
+ erlang-shell
+ c++-mode
+ c-c++-menu
  list-packages
- artist-mode
- org-plot/gnuplot
- gnuplot-run-buffer
- gnuplot-compile
+ yas-new-snippet
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 21)
- (erc . 2)
+ (list-packages . 24)
+ (erc . 7)
  (ecb-activate . 1)
  (sort-lines . 2)
  (eclim-java-import . 13)
@@ -32,7 +32,7 @@
  (eclim-java-generate-getter-and-setter . 1)
  (eclim-java-import-organize . 9)
  (make-directory . 2)
- (yas-new-snippet . 8)
+ (yas-new-snippet . 10)
  (yas-visit-snippet-file . 1)
  (snippet-mode . 1)
  (yas/abort-snippet . 3)
@@ -56,14 +56,21 @@
  (tetris . 1)
  (org-babel-execute-src-block . 1)
  (erlang-mode . 2)
- (erlang-shell . 12)
+ (erlang-shell . 14)
  (erlang-shell-mode . 1)
  (newline-and-indent . 1)
  (org-mode . 2)
  (gnuplot-compile . 2)
  (gnuplot-run-buffer . 1)
  (gnuplot-mode-menu . 1)
- (artist-mode . 5)
- (figlet . 18)
- (autopair-mode . 1)
+ (artist-mode . 9)
+ (w3m-find-file . 2)
+ (w3m . 1)
+ (w3 . 2)
+ (w3-fetch . 1)
+ (w3-search . 1)
+ (w3-mode . 1)
+ (c-c++-menu . 1)
+ (c++-mode . 3)
+ (mark-page . 1)
 )

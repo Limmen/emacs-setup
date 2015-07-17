@@ -36,6 +36,8 @@
 (require 'gnuplot-mode)
 (require 'dired+)
 (require 'figlet)
+(require 'cc-mode) 
+(require 'auto-complete-clang)
 #+end_src
 *** load
 #+begin_src emacs-lisp
@@ -220,6 +222,11 @@ Emacs buffer are those starting with “*”."
 (setq py-smart-indentation t)
 #+end_src
 
+**** C/C++
+#+begin_src emacs-lisp
+;;(define-key c++-mode-map (kbd "C-S-<tab>") 'ac-complete-clang)
+ (setq-default c-basic-offset 4)
+#+end_src
 *** Default modes
 #+begin_src emacs-lisp
 (show-paren-mode 1)
@@ -936,6 +943,7 @@ smtpmail-debug-info t)
 (global-set-key  (kbd "C-M-g") 'org-plot/gnuplot)
 (global-set-key  (kbd "C-§") 'auto-complete-mode)
 (global-set-key  (kbd "RET") 'newline-and-indent)
+(global-set-key  (kbd "C-<return>") 'mark-page)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
 (global-set-key (kbd "C-1") (lambda()
@@ -944,4 +952,3 @@ smtpmail-debug-info t)
 			       (artist-mode)))
 
 #+end_src emacs-lisp
-

@@ -31,6 +31,8 @@
 (require 'gnuplot-mode)
 (require 'dired+)
 (require 'figlet)
+(require 'cc-mode) 
+(require 'auto-complete-clang)
 
 
 
@@ -184,6 +186,9 @@ Emacs buffer are those starting with “*”."
 (setq py-split-windows-on-execute-p nil)
 ; try to automagically figure out indentation
 (setq py-smart-indentation t)
+
+;;(define-key c++-mode-map (kbd "C-S-<tab>") 'ac-complete-clang)
+ (setq-default c-basic-offset 4)
 
 (show-paren-mode 1)
 (global-linum-mode 1)
@@ -857,6 +862,7 @@ smtpmail-debug-info t)
 (global-set-key  (kbd "C-M-g") 'org-plot/gnuplot)
 (global-set-key  (kbd "C-§") 'auto-complete-mode)
 (global-set-key  (kbd "RET") 'newline-and-indent)
+(global-set-key  (kbd "C-<return>") 'mark-page)
 (defun shell-mode-hook () (interactive)
       (local-set-key (kbd "C-c l") 'erase-buffer))
 (global-set-key (kbd "C-1") (lambda()

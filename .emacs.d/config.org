@@ -227,6 +227,14 @@ Emacs buffer are those starting with “*”."
 ;;(define-key c++-mode-map (kbd "C-S-<tab>") 'ac-complete-clang)
  (setq-default c-basic-offset 4)
 #+end_src
+**** erlang-mode
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.yaws?$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.escript?$" . erlang-mode))
+#+end_src
+
 *** Default modes
 #+begin_src emacs-lisp
 (show-paren-mode 1)
@@ -730,6 +738,7 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
  (python . t)
  (java . t)
  (latex . t)
+ (prolog . t)
 ;;(erlang . t)
  (ditaa . t)))
 ;; add additional languages with '((language . t)))

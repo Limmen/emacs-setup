@@ -235,6 +235,10 @@ Emacs buffer are those starting with “*”."
 (add-to-list 'auto-mode-alist '("\\.escript?$" . erlang-mode))
 #+end_src
 
+**** prolog-mode
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.pl?$" . prolog-mode))
+#+end_src
 *** Default modes
 #+begin_src emacs-lisp
 (show-paren-mode 1)

@@ -190,6 +190,13 @@ Emacs buffer are those starting with “*”."
 ;;(define-key c++-mode-map (kbd "C-S-<tab>") 'ac-complete-clang)
  (setq-default c-basic-offset 4)
 
+(add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.yaws?$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.escript?$" . erlang-mode))
+
+(add-to-list 'auto-mode-alist '("\\.pl?$" . prolog-mode))
+
 (show-paren-mode 1)
 (global-linum-mode 1)
 (nyan-mode 1)

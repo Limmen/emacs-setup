@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ mail
  autopair-mode
  prolog-mode
  list-packages
  erc
  mark-page
- erlang-shell
- c++-mode
+ web-mode
 )
 
 ;; ----- smex-data -----
@@ -75,4 +75,6 @@
  (mark-page . 1)
  (prolog-mode . 2)
  (autopair-mode . 2)
+ (mail . 2)
+ (mu4e . 5)
 )

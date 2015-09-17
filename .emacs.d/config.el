@@ -27,7 +27,7 @@
 (require 'company)
 (require 'company-emacs-eclim)
 (require 'fill-column-indicator)
-(require 'python-mode)
+;(require 'python-mode)
 (require 'gnuplot-mode)
 (require 'dired+)
 (require 'figlet)
@@ -176,7 +176,7 @@ Emacs buffer are those starting with “*”."
 (setq-default py-which-bufname "IPython")
 ; use the wx backend, for both mayavi and matplotlib
 (setq py-python-command-args
-  '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+ '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
 (setq py-force-py-shell-name-p t)
 
 ; switch to the interpreter after executing code
@@ -609,7 +609,7 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
  />")
 
 ;; allow for export=>beamer by placing
-
+;;(require 'ox-latex)
 ;; #+LaTeX_CLASS: beamer in org files
 (unless (boundp 'org-export-latex-classes)
   (setq org-export-latex-classes nil))
@@ -661,6 +661,16 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
      ("\\paragraph{%s}" . "\\paragraph*{%s}")
      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
+(add-to-list 'org-export-latex-classes
+             '("article"
+               "\\documentclass{article}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 ;; active Babel languages
 (org-babel-do-load-languages

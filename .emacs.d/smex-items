@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- mail
+ linum-mode
  autopair-mode
- prolog-mode
+ yas-new-snippet
+ magit-add-remote
  list-packages
- erc
- mark-page
- web-mode
+ auto-complete
+ calc
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 25)
+ (list-packages . 27)
  (erc . 9)
  (ecb-activate . 1)
  (sort-lines . 2)
@@ -32,7 +32,7 @@
  (eclim-java-generate-getter-and-setter . 1)
  (eclim-java-import-organize . 9)
  (make-directory . 2)
- (yas-new-snippet . 10)
+ (yas-new-snippet . 11)
  (yas-visit-snippet-file . 1)
  (snippet-mode . 1)
  (yas/abort-snippet . 3)
@@ -53,7 +53,7 @@
  (load-theme . 8)
  (web-mode . 17)
  (js-mode . 2)
- (tetris . 1)
+ (tetris . 2)
  (org-babel-execute-src-block . 1)
  (erlang-mode . 2)
  (erlang-shell . 14)
@@ -74,7 +74,14 @@
  (c++-mode . 3)
  (mark-page . 1)
  (prolog-mode . 2)
- (autopair-mode . 2)
+ (autopair-mode . 3)
  (mail . 2)
  (mu4e . 5)
+ (calc . 1)
+ (auto-complete . 2)
+ (magit-add-remote . 1)
+ (TeX-master-file . 1)
+ (TeX-command-master . 1)
+ (artist-select-op-circle . 4)
+ (linum-mode . 8)
 )

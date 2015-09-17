@@ -1,1 +1,1 @@
-;; org-persist.el - kim-ThinkPad-W510 at <2015-08-13 tor 18:04>
+;; org-persist.el - limmen at <2015-09-17 tor 08:31>

@@ -664,7 +664,7 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
 
 
 (add-to-list 'org-export-latex-classes
-             '("article"
+ '("article"
                "\\documentclass{article}"
                ("\\section{%s}" . "\\section*{%s}")
                ("\\subsection{%s}" . "\\subsection*{%s}")

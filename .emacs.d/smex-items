@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ list-packages
  linum-mode
  autopair-mode
  yas-new-snippet
  magit-add-remote
- list-packages
  auto-complete
  calc
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 27)
+ (list-packages . 28)
  (erc . 9)
  (ecb-activate . 1)
  (sort-lines . 2)

@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads nil nil ("ob-prolog-pkg.el" "ob-prolog.el") (21946
-;;;;;;  23980 393173 162000))
+;;;### (autoloads nil nil ("ob-prolog-pkg.el" "ob-prolog.el") (22043
+;;;;;;  49567 709825 694000))
 
 ;;;***
 

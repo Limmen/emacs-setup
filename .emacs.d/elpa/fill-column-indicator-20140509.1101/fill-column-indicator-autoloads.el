@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (turn-on-fci-mode fci-mode) "fill-column-indicator"
-;;;;;;  "fill-column-indicator.el" (21886 45070 383279 895000))
+;;;;;;  "fill-column-indicator.el" (22043 49508 985719 200000))
 ;;; Generated autoloads from fill-column-indicator.el
 
 (autoload 'fci-mode "fill-column-indicator" "\
@@ -31,7 +31,7 @@ Turn on fci-mode unconditionally.
 ;;;***
 
 ;;;### (autoloads nil nil ("fci-osx-23-fix.el" "fill-column-indicator-pkg.el")
-;;;;;;  (21886 45070 515062 816000))
+;;;;;;  (22043 49509 33557 869000))
 
 ;;;***
 

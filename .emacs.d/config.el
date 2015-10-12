@@ -6,35 +6,38 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
-(require 'flycheck)
 (require 'erlang-start)
-(require 'auto-complete)
-(require 'auto-complete-config)
 (require 'yasnippet)
 (require 'autopair)
 (require 'web-mode)
 (require 'ibuffer)
 (require 'org)
-(require 'tabbar)
-(require 'ecb-autoloads)
+;(require 'ecb-autoloads)
 (require 'ace-jump-mode)
+;;(require 'ido)
 (require 'ido-vertical-mode)
 (require 'smex)
 (require 'ido-hacks nil t)
-(require 'eclim)
-(require 'eclimd)
-(require 'ac-emacs-eclim-source)
-(require 'company)
-(require 'company-emacs-eclim)
 (require 'fill-column-indicator)
 ;(require 'python-mode)
 (require 'gnuplot-mode)
 (require 'dired+)
 (require 'figlet)
 (require 'cc-mode) 
-(require 'auto-complete-clang)
+;;(require 'auto-complete-clang)
 
-
+(show-paren-mode 1)
+(global-linum-mode 1)
+(nyan-mode 1)
+;;(auto-complete-mode 1)
+(global-visual-line-mode t)
+(ido-mode 1)
+(ido-vertical-mode 1)
+(autopair-global-mode) ;; enable autopair in all buffers
+(yas-global-mode 1)
+;; make indentation commands use space only (never tab character)
+(setq-default indent-tabs-mode nil) ; emacs 23.1, 24.2, default to t
+(setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -105,71 +108,9 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 
-;; (require 'helm-config)
-;; (helm-mode 1)
-;; (setq helm-idle-delay 0.01)
-;; (setq helm-input-idle-delay 0.01)
-;; (global-set-key (kbd "M-x") 'helm-M-x)
-;; (global-set-key (kbd "C-x b") 'helm-mini)
-;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
-;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-;;
-;;(require 'helm-files)
-;;(setq helm-idle-delay 0.1)
-;;(setq helm-input-idle-delay 0.1)
-;;(setq helm-locate-command "locate %s -e -A %s")
-;;(global-set-key (kbd "C-x C-f") 'helm-for-files)
-
-(setq ecb-layout-name "left2")
-
-; turn on the tabbar
-(tabbar-mode t)
-; define all tabs to be one of 3 possible groups: “Emacs Buffer”, “Dired”,
-;“User Buffer”.
-(defun tabbar-buffer-groups ()
-  "Return the list of group names the current buffer belongs to.
-This function is a custom function for tabbar-mode's tabbar-buffer-groups.
-This function group all buffers into 3 groups:
-Those Dired, those user buffer, and those emacs buffer.
-Emacs buffer are those starting with “*”."
-  (list
-   (cond
-    ((string-equal "*" (substring (buffer-name) 0 1))
-     "Emacs Buffer"
-     )
-    ((eq major-mode 'dired-mode)
-     "Dired"
-     )
-    (t
-     "User Buffer"
-     )
-    ))) 
-
-(setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
-
-(setq tabbar-background-color "#959A79") ;; the color of the tabbar background
-(custom-set-faces
- '(tabbar-default ((t (:inherit variable-pitch :background "#959A79" :foreground "black" :weight bold))))
- '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
- '(tabbar-button-highlight ((t (:inherit tabbar-default))))
- '(tabbar-highlight ((t (:underline t))))
- '(tabbar-selected ((t (:inherit tabbar-default :background "#95CA59"))))
- '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
+;;(setq ecb-layout-name "left2")
 
 (smex-initialize)
-
-(setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-complete-lisp-symbol-partially try-complete-lisp-symbol))
-
-;;(ac-config-default)
-;;(setq ac-use-menu-map t)
-
-(ac-emacs-eclim-config)
-(setq eclim-auto-save t)
-(global-eclim-mode)
-
-(company-emacs-eclim-setup)
-(global-company-mode t)
 
 ; use IPython
 (setq-default py-shell-name "ipython")
@@ -197,24 +138,6 @@ Emacs buffer are those starting with “*”."
 
 (add-to-list 'auto-mode-alist '("\\.pl?$" . prolog-mode))
 
-(show-paren-mode 1)
-(global-linum-mode 1)
-(nyan-mode 1)
-;;(auto-complete-mode 1)
-(global-visual-line-mode t)
-(ido-mode 1)
-(ido-vertical-mode 1)
-(autopair-global-mode) ;; enable autopair in all buffers
-(yas-global-mode 1)
-;;(global-auto-complete-mode t)
-(global-eclim-mode)
-
-;;(setq-default indent-tabs-mode t)
-
-;; make indentation commands use space only (never tab character)
-(setq-default indent-tabs-mode nil) ; emacs 23.1, 24.2, default to t
-(setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
-
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode)) 
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode)) 
@@ -238,321 +161,6 @@ Emacs buffer are those starting with “*”."
     (progn
       (window-configuration-to-register '_)
       (delete-other-windows))))
-
-;;ditaa path
-(setq org-ditaa-jar-path "/usr/bin/ditaa")
-
-;; disable the gui.  Who uses emacs for toolbars and menus?
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(setq menu-prompting nil)
-
-(setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-
-;; Always ask for y/n keypress instead of typing out 'yes' or 'no'
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-(setq default-frame-alist (append (list 
-  '(width  . 81)  ; Width set to 81 characters 
-  '(height . 40)) ; Height set to 60 lines 
-  default-frame-alist)) 
-
-(setq inhibit-startup-message   t)   ; Don't want any startup message 
-(setq make-backup-files         nil) ; Don't want any backup files 
-(setq auto-save-list-file-name  nil) ; Don't want any .saves files 
-(setq auto-save-default         nil) ; Don't want any auto saving 
-
-(setq search-highlight           t) ; Highlight search object 
-(setq query-replace-highlight    t) ; Highlight query object 
-
-; number of characters until the fill column
-(setq fill-column 70)
-
-; specify the fringe width for windows -- this sets both the left and
-; right fringes to 10
-(require 'fringe)
-(fringe-mode 10)
-
-; lines which are exactly as wide as the window (not counting the
-; final newline character) are not continued. Instead, when point is
-; at the end of the line, the cursor appears in the right fringe.
-(setq overflow-newline-into-fringe t)
-
-; each line of text gets one line on the screen (i.e., text will run
-; off the left instead of wrapping around onto a new line)
-(setq truncate-lines t)
-; truncate lines even in partial-width windows
-(setq truncate-partial-width-windows t)
-
-; display line numbers to the right of the window
-(global-linum-mode t)
-; show the current line and column numbers in the stats bar as well
-(line-number-mode t)
-(column-number-mode t)
-
-; highlight the current line
-(require 'highlight-current-line)
-(global-hl-line-mode t)
-(setq highlight-current-line-globally t)
-(setq highlight-current-line-high-faces nil)
-(setq highlight-current-line-whole-line nil)
-(setq hl-line-face (quote highlight))
-
-; make sure transient mark mode is enabled (it should be by default,
-; but just in case)
-(transient-mark-mode t)
-
-; turn on mouse wheel support for scrolling
-(require 'mwheel)
-(mouse-wheel-mode t)
-
-;-------------------------;
-;;; Syntax Highlighting ;;;
-;-------------------------;
-
-; text decoration
-(require 'font-lock)
-(setq font-lock-maximum-decoration t)
-(global-font-lock-mode t)
-(global-hi-lock-mode nil)
-(setq jit-lock-contextually t)
-(setq jit-lock-stealth-verbose t)
-
-; if there is size information associated with text, change the text
-; size to reflect it
-(size-indication-mode t)
-
-(setq dired-listing-switches "-Al --si --time-style long-iso")
-
-;;'(custom-enabled-themes (quote (solarized-dark)))
-
-; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
-(defun rename-file-and-buffer (new-name)
-  "Renames both current buffer and file it's visiting to NEW-NAME."
-  (interactive "sNew name: ")
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
-    (if (not filename)
-        (message "Buffer '%s' is not visiting a file!" name)
-      (if (get-buffer new-name)
-          (message "A buffer named '%s' already exists!" new-name)
-        (progn
-          (rename-file name new-name 1)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          (set-buffer-modified-p nil))))))
-;; move buffer
-(defun move-buffer-file (dir)
-  "Moves both current buffer and file it's visiting to DIR."
-  (interactive "DNew directory: ")
-  (let* ((name (buffer-name))
-         (filename (buffer-file-name))
-         (dir
-          (if (string-match dir "\\(?:/\\|\\\\)$")
-              (substring dir 0 -1) dir))
-         (newname (concat dir "/" name)))
-    (if (not filename)
-        (message "Buffer '%s' is not visiting a file!" name)
-        (progn (copy-file filename newname 1)
-               (delete-file filename)
-               (set-visited-file-name newname)
-               (set-buffer-modified-p nil)
-               t))))
-(defun revert-all-buffers ()
-  "Refreshes all open buffers from their respective files"
-  (interactive)
-  (mapc (lambda (buffer)
-          (when (and (buffer-file-name buffer)
-                     (not (buffer-modified-p buffer)))
-            (set-buffer buffer)
-            (ignore-errors (revert-buffer t t t))))
-        (buffer-list))
-  (message "Refreshed open files"))
-(defun close-all-buffer ()
-  "Closes all the buffers."
-  (interactive)
-  (mapc (lambda (buffer) (kill-buffer buffer)) (buffer-list)))
-(defun delete-file-and-buffer ()
-  "Kill the current buffer and deletes the file it is visiting."
-  (interactive)
-  (let ((filename (buffer-file-name)))
-    (when filename
-      (if (vc-backend filename)
-          (vc-delete-file filename)
-        (progn
-          (delete-file filename)
-          (message "Deleted file %s" filename)
-          (kill-buffer))))))
-;;Create necessary dirs automaticly
-(defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
-  "Create parent directory if not exists while visiting file."
-  (unless (file-exists-p filename)
-    (let ((dir (file-name-directory filename)))
-      (unless (file-exists-p dir)
-        (make-directory dir)))))
-
-
-(defun copy-current-file-path ()
-  "Add current file path to kill ring. Limits the filename to project root if possible."
-  (interactive)
-  (let ((filename (buffer-file-name)))
-    (kill-new (if eproject-mode
-                  (s-chop-prefix (eproject-root) filename)
-                filename))))
-
-; fullscreen, taken from http://www.emacswiki.org/emacs/FullScreen#toc26
-; should work for X und OSX with emacs 23.x (TODO find minimum version).
-; for windows it uses (w32-send-sys-command #xf030) (#xf030 == 61488)
-(defvar babcore-fullscreen-p t "Check if fullscreen is on or off")
-(setq babcore-stored-frame-width nil)
-(setq babcore-stored-frame-height nil)
-(defun babcore-non-fullscreen ()
-  (interactive)
-  (if (fboundp 'w32-send-sys-command)
-      ;; WM_SYSCOMMAND restore #xf120
-      (w32-send-sys-command 61728)
-    (progn (set-frame-parameter nil 'width 
-                                (if babcore-stored-frame-width
-                                    babcore-stored-frame-width 82))
-           (set-frame-parameter nil 'height
-                                (if babcore-stored-frame-height 
-                                    babcore-stored-frame-height 42))
-           (set-frame-parameter nil 'fullscreen nil))))
-(defun babcore-fullscreen ()
-  (interactive)
-  (setq babcore-stored-frame-width (frame-width))
-  (setq babcore-stored-frame-height (frame-height))
-  (if (fboundp 'w32-send-sys-command)
-      ;; WM_SYSCOMMAND maximaze #xf030
-      (w32-send-sys-command 61488)
-    (set-frame-parameter nil 'fullscreen 'fullboth)))
-(defun toggle-fullscreen ()
-  (interactive)
-  (setq babcore-fullscreen-p (not babcore-fullscreen-p))
-  (if babcore-fullscreen-p
-      (babcore-non-fullscreen)
-    (babcore-fullscreen)))
-
-; colored shell commands via C-!
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(defun babcore-shell-execute(cmd)
-  "Execute a shell command in an interactive shell buffer."
-   (interactive "sShell command: ")
-   (shell (get-buffer-create "*shell-commands-buf*"))
-   (process-send-string (get-buffer-process "*shell-commands-buf*") (concat cmd "\n")))
-
-(defun ido-goto-symbol (&optional symbol-list)
-      "Refresh imenu and jump to a place in the buffer using Ido."
-      (interactive)
-      (unless (featurep 'imenu)
-        (require 'imenu nil t))
-      (cond
-       ((not symbol-list)
-        (let ((ido-mode ido-mode)
-              (ido-enable-flex-matching
-               (if (boundp 'ido-enable-flex-matching)
-                   ido-enable-flex-matching t))
-              name-and-pos symbol-names position)
-          (unless ido-mode
-            (ido-mode 1)
-            (setq ido-enable-flex-matching t))
-          (while (progn
-                   (imenu--cleanup)
-                   (setq imenu--index-alist nil)
-                   (ido-goto-symbol (imenu--make-index-alist))
-                   (setq selected-symbol
-                         (ido-completing-read "Symbol? " symbol-names))
-                   (string= (car imenu--rescan-item) selected-symbol)))
-          (unless (and (boundp 'mark-active) mark-active)
-            (push-mark nil t nil))
-          (setq position (cdr (assoc selected-symbol name-and-pos)))
-          (cond
-           ((overlayp position)
-            (goto-char (overlay-start position)))
-           (t
-            (goto-char position)))))
-       ((listp symbol-list)
-        (dolist (symbol symbol-list)
-          (let (name position)
-            (cond
-             ((and (listp symbol) (imenu--subalist-p symbol))
-              (ido-goto-symbol symbol))
-             ((listp symbol)
-              (setq name (car symbol))
-              (setq position (cdr symbol)))
-             ((stringp symbol)
-              (setq name symbol)
-              (setq position
-                    (get-text-property 1 'org-imenu-marker symbol))))
-            (unless (or (null position) (null name)
-                        (string= (car imenu--rescan-item) name))
-              (add-to-list 'symbol-names name)
-              (add-to-list 'name-and-pos (cons name position))))))))
-
-; https://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
-;; I prefer using the "clipboard" selection (the one the
-;; typically is used by c-c/c-v) before the primary selection
-;; (that uses mouse-select/middle-button-click)
-(setq x-select-enable-clipboard t)
-;; If emacs is run in a terminal, the clipboard- functions have no
-;; effect. Instead, we use of xsel, see
-;; http://www.vergenet.net/~conrad/software/xsel/ -- "a command-line
-;; program for getting and setting the contents of the X selection"
-(unless window-system
- (when (getenv "DISPLAY")
-  ;; Callback for when user cuts
-  (defun xsel-cut-function (text &optional push)
-    ;; Insert text to temp-buffer, and "send" content to xsel stdin
-    (with-temp-buffer
-      (insert text)
-      ;; I prefer using the "clipboard" selection (the one the
-      ;; typically is used by c-c/c-v) before the primary selection
-      ;; (that uses mouse-select/middle-button-click)
-      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
-  ;; Call back for when user pastes
-  (defun xsel-paste-function()
-    ;; Find out what is current selection by xsel. If it is different
-    ;; from the top of the kill-ring (car kill-ring), then return
-    ;; it. Else, nil is returned, so whatever is in the top of the
-    ;; kill-ring will be used.
-    (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
-      (unless (string= (car kill-ring) xsel-output)
-        xsel-output )))
-  ;; Attach callbacks to hooks
-  (setq interprogram-cut-function 'xsel-cut-function)
-  (setq interprogram-paste-function 'xsel-paste-function)
-  ;; Idea from
-  ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
-  ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
- ))
-
-(defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
-  (if (memq (process-status proc) '(signal exit))
-      (let ((buffer (process-buffer proc)))
-        ad-do-it
-        (kill-buffer buffer))
-    ad-do-it))
-(ad-activate 'term-sentinel)
-
-(defvar my-term-shell "/bin/bash")
-(defadvice ansi-term (before force-bash)
-  (interactive (list my-term-shell)))
-(ad-activate 'ansi-term)
-
-(defun my-term-use-utf8 ()
-  (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-(add-hook 'term-exec-hook 'my-term-use-utf8)
-
-(add-hook 'term-mode-hook (lambda ()
-                            (define-key term-raw-map (kbd "C-y") 'term-paste)))
-
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 
 (setq org-log-done t)
 (setq org-agenda-files (list "/home/kim/Dropbox/org/refile.org"
@@ -876,6 +484,96 @@ smtpmail-debug-info t)
             (local-set-key (kbd "C-4") 'artist-select-op-square)   ; f4 = rectangle
             (local-set-key (kbd "C-5") 'artist-select-op-text-see-thru)  ; f5 = ellipse
      ))
+
+;;ditaa path
+(setq org-ditaa-jar-path "/usr/bin/ditaa")
+
+;; disable the gui.  Who uses emacs for toolbars and menus?
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(setq menu-prompting nil)
+
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;; Always ask for y/n keypress instead of typing out 'yes' or 'no'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq default-frame-alist (append (list 
+  '(width  . 81)  ; Width set to 81 characters 
+  '(height . 40)) ; Height set to 60 lines 
+  default-frame-alist)) 
+
+(setq inhibit-startup-message   t)   ; Don't want any startup message 
+(setq make-backup-files         nil) ; Don't want any backup files 
+(setq auto-save-list-file-name  nil) ; Don't want any .saves files 
+(setq auto-save-default         nil) ; Don't want any auto saving 
+
+(setq search-highlight           t) ; Highlight search object 
+(setq query-replace-highlight    t) ; Highlight query object 
+
+; number of characters until the fill column
+(setq fill-column 70)
+
+; specify the fringe width for windows -- this sets both the left and
+; right fringes to 10
+(require 'fringe)
+(fringe-mode 10)
+
+; lines which are exactly as wide as the window (not counting the
+; final newline character) are not continued. Instead, when point is
+; at the end of the line, the cursor appears in the right fringe.
+(setq overflow-newline-into-fringe t)
+
+; each line of text gets one line on the screen (i.e., text will run
+; off the left instead of wrapping around onto a new line)
+(setq truncate-lines t)
+; truncate lines even in partial-width windows
+(setq truncate-partial-width-windows t)
+
+; display line numbers to the right of the window
+(global-linum-mode t)
+; show the current line and column numbers in the stats bar as well
+(line-number-mode t)
+(column-number-mode t)
+
+; highlight the current line
+(require 'highlight-current-line)
+(global-hl-line-mode t)
+(setq highlight-current-line-globally t)
+(setq highlight-current-line-high-faces nil)
+(setq highlight-current-line-whole-line nil)
+(setq hl-line-face (quote highlight))
+
+; make sure transient mark mode is enabled (it should be by default,
+; but just in case)
+(transient-mark-mode t)
+
+; turn on mouse wheel support for scrolling
+(require 'mwheel)
+(mouse-wheel-mode t)
+
+;-------------------------;
+;;; Syntax Highlighting ;;;
+;-------------------------;
+
+; text decoration
+(require 'font-lock)
+(setq font-lock-maximum-decoration t)
+(global-font-lock-mode t)
+(global-hi-lock-mode nil)
+(setq jit-lock-contextually t)
+(setq jit-lock-stealth-verbose t)
+
+; if there is size information associated with text, change the text
+; size to reflect it
+(size-indication-mode t)
+
+(setq dired-listing-switches "-Al --si --time-style long-iso")
 
 (global-set-key (kbd "M-d") 'backward-kill-word)
 (global-set-key (kbd "C-d") 'delete-backward-char)

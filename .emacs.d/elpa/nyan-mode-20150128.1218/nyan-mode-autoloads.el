@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (nyan-mode) "nyan-mode" "nyan-mode.el" (21862 2786
-;;;;;;  317267 20000))
+;;;### (autoloads (nyan-mode) "nyan-mode" "nyan-mode.el" (22043 49651
+;;;;;;  201723 438000))
 ;;; Generated autoloads from nyan-mode.el
 
 (defvar nyan-mode nil "\
@@ -27,8 +27,8 @@ option `scroll-bar-mode'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("nyan-mode-pkg.el") (21862 2786 677023
-;;;;;;  10000))
+;;;### (autoloads nil nil ("nyan-mode-pkg.el") (22043 49651 306714
+;;;;;;  170000))
 
 ;;;***
 

@@ -4,8 +4,8 @@
 
 
 ;;;### (autoloads (gnuplot-run-buffer gnuplot-run-region gnuplot-compile
-;;;;;;  gnuplot-mode) "gnuplot-mode" "gnuplot-mode.el" (21886 53327
-;;;;;;  983389 539000))
+;;;;;;  gnuplot-mode) "gnuplot-mode" "gnuplot-mode.el" (22043 49517
+;;;;;;  493719 454000))
 ;;; Generated autoloads from gnuplot-mode.el
 
 (autoload 'gnuplot-mode "gnuplot-mode" "\
@@ -36,8 +36,8 @@ require buffer to be visiting a file.
 
 ;;;***
 
-;;;### (autoloads nil nil ("gnuplot-mode-pkg.el") (21886 53328 183331
-;;;;;;  218000))
+;;;### (autoloads nil nil ("gnuplot-mode-pkg.el") (22043 49517 520775
+;;;;;;  207000))
 
 ;;;***
 

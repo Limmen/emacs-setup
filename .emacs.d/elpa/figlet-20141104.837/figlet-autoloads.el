@@ -5,7 +5,7 @@
 
 ;;;### (autoloads (figlet-preview-fonts figlet-figletify-region-comment
 ;;;;;;  figlet-figletify-region figlet-comment figlet) "figlet" "figlet.el"
-;;;;;;  (21911 31998 267969 484000))
+;;;;;;  (22043 49535 909720 2000))
 ;;; Generated autoloads from figlet.el
 
 (autoload 'figlet "figlet" "\
@@ -38,7 +38,7 @@ View an example of each font in a new buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("figlet-pkg.el") (21911 31998 373469 136000))
+;;;### (autoloads nil nil ("figlet-pkg.el") (22043 49535 925958 761000))
 
 ;;;***
 

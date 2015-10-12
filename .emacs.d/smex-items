@@ -5,9 +5,9 @@
  linum-mode
  autopair-mode
  yas-new-snippet
- magit-add-remote
- auto-complete
  calc
+ web-mode
+ erlang-shell
 )
 
 ;; ----- smex-data -----

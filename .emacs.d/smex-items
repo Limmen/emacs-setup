@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- racket-repl
  list-packages
- package-install
- lisp-mode
- ielm
- emacs-lisp-mode
  linum-mode
+ autopair-mode
+ yas-new-snippet
+ load-library
+ org-reload
+ eww
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 34)
+ (list-packages . 35)
  (erc . 9)
  (ecb-activate . 1)
  (sort-lines . 2)
@@ -32,7 +32,7 @@
  (eclim-java-generate-getter-and-setter . 1)
  (eclim-java-import-organize . 9)
  (make-directory . 2)
- (yas-new-snippet . 11)
+ (yas-new-snippet . 13)
  (yas-visit-snippet-file . 1)
  (snippet-mode . 1)
  (yas/abort-snippet . 3)
@@ -74,7 +74,7 @@
  (c++-mode . 3)
  (mark-page . 1)
  (prolog-mode . 2)
- (autopair-mode . 3)
+ (autopair-mode . 6)
  (mail . 2)
  (mu4e . 5)
  (calc . 1)
@@ -83,10 +83,8 @@
  (TeX-master-file . 1)
  (TeX-command-master . 1)
  (artist-select-op-circle . 4)
- (linum-mode . 11)
- (package-install . 4)
- (emacs-lisp-mode . 1)
- (ielm . 1)
- (lisp-mode . 1)
- (racket-repl . 1)
+ (linum-mode . 15)
+ (eww . 1)
+ (load-library . 3)
+ (org-reload . 1)
 )

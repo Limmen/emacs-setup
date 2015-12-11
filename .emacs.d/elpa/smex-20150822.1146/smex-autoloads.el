@@ -1,10 +1,9 @@
 ;;; smex-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads (smex-initialize smex-major-mode-commands smex)
-;;;;;;  "smex" "smex.el" (22043 49485 985718 515000))
+;;;### (autoloads nil "smex" "smex.el" (22123 19784 580987 272000))
 ;;; Generated autoloads from smex.el
 
 (autoload 'smex "smex" "\
@@ -24,15 +23,9 @@ Like `smex', but limited to commands that are relevant to the active major mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("smex-pkg.el") (22043 49486 11214 939000))
-
-;;;***
-
-(provide 'smex-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; smex-autoloads.el ends here

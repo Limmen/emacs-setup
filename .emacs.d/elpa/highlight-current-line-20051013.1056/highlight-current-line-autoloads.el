@@ -1,10 +1,10 @@
 ;;; highlight-current-line-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads (highlight-current-line-minor-mode) "highlight-current-line"
-;;;;;;  "highlight-current-line.el" (22043 49597 81721 825000))
+;;;### (autoloads nil "highlight-current-line" "highlight-current-line.el"
+;;;;;;  (22123 20859 68990 723000))
 ;;; Generated autoloads from highlight-current-line.el
 
 (autoload 'highlight-current-line-minor-mode "highlight-current-line" "\
@@ -17,16 +17,9 @@ line is hightlighted by customizing the group highlight-current-line.
 
 ;;;***
 
-;;;### (autoloads nil nil ("highlight-current-line-pkg.el") (22043
-;;;;;;  49597 151813 906000))
-
-;;;***
-
-(provide 'highlight-current-line-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; highlight-current-line-autoloads.el ends here

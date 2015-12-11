@@ -1,10 +1,10 @@
 ;;; autopair-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads (autopair-global-mode autopair-mode) "autopair"
-;;;;;;  "autopair.el" (22043 49414 997716 399000))
+;;;### (autoloads nil "autopair" "autopair.el" (22123 19699 248986
+;;;;;;  998000))
 ;;; Generated autoloads from autopair.el
 
 (autoload 'autopair-mode "autopair" "\
@@ -35,16 +35,9 @@ See `autopair-mode' for more information on Autopair mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("autopair-pkg.el") (22043 49415 20471
-;;;;;;  497000))
-
-;;;***
-
-(provide 'autopair-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; autopair-autoloads.el ends here

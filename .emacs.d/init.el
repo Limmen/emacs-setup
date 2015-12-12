@@ -128,6 +128,7 @@
 (global-set-key (kbd "<f5>") 'goto-line)
 (global-set-key  (kbd "C-<return>") 'mark-page)
 (global-set-key  (kbd "C-M-¤") 'dired-do-query-replace-regexp)
+(global-set-key  (kbd "TAB") 'yas-expand)
 (global-set-key (kbd "C-1") (lambda()
 			       (interactive)
 			       (show-all)

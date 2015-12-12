@@ -1,3 +1,4 @@
+;Initialize package-archives
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
@@ -5,37 +6,57 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
-;;(load-theme 'solarized t)
+;;Set themes
+;(load-theme 'ample t t)
+(load-theme 'ample-flat t t)
+;(load-theme 'ample-light t t)
+;(enable-theme 'ample)
+ (enable-theme 'ample-flat)
+;(enable-theme 'ample-light)
 
+
+
+;ace-jump
 (require 'ace-jump-mode)
+;yasnippet
 (require 'yasnippet)
+(yas-global-mode 1)
+;ido
 (require 'ido-vertical-mode)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(ido-vertical-mode t)
 (require 'smex)
 (require 'dired+)
 (require 'autopair)
 
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(ido-vertical-mode t)
+;Default global modes
 (show-paren-mode 1)
 (global-linum-mode 1)
 (nyan-mode 1)
 (global-visual-line-mode t)
 (autopair-global-mode) 
-(yas-global-mode 1)
 (setq-default indent-tabs-mode nil) 
 (setq-default tab-width 4) 
-
+; display line numbers to the right of the window
+(global-linum-mode t)
+; show the current line and column numbers in the stats bar as well
+(line-number-mode t)
+(column-number-mode t)
+; make sure transient mark mode is enabled (it should be by default,
+; but just in case)
+(transient-mark-mode t)
 
 ;;ditaa path
 (setq org-ditaa-jar-path "/usr/bin/ditaa")
 
-;; disable the gui.  Who uses emacs for toolbars and menus?
+;; disable the gui.  
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (psetq menu-prompting nil)
 
+;;Set encodings
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -77,22 +98,12 @@
 ; truncate lines even in partial-width windows
 (setq truncate-partial-width-windows t)
 
-; display line numbers to the right of the window
-(global-linum-mode t)
-; show the current line and column numbers in the stats bar as well
-(line-number-mode t)
-(column-number-mode t)
-
-; make sure transient mark mode is enabled (it should be by default,
-; but just in case)
-(transient-mark-mode t)
-
 ; turn on mouse wheel support for scrolling
 (require 'mwheel)
 (mouse-wheel-mode t)
 
 
-
+;;Keybinds
 (global-set-key (kbd "M-d") 'backward-kill-word)
 (global-set-key (kbd "C-d") 'delete-backward-char)
 (global-set-key (kbd "C-z") 'undo) 
@@ -116,28 +127,13 @@
 (global-set-key (kbd "C--") 'shrink-window)
 (global-set-key (kbd "<f5>") 'goto-line)
 (global-set-key  (kbd "C-<return>") 'mark-page)
+(global-set-key  (kbd "C-M-¤") 'dired-do-query-replace-regexp)
 (global-set-key (kbd "C-1") (lambda()
 			       (interactive)
 			       (show-all)
 			       (artist-mode)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (solarized-dark)))
- '(custom-safe-themes
-   (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
-
-;;org-mode
+;;org-mode settings
 ;; active Babel languages
 (org-babel-do-load-languages
  'org-babel-load-languages

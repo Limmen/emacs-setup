@@ -2,17 +2,20 @@
 ;; ----- smex-history -----
 (
  list-packages
+ linum-mode
+ customize-themes
+ customize-face
  custom-theme-visit-theme
  list-abbrevs
  cd
- 5x5
- arp
- dbx
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 3)
+ (list-packages . 4)
  (list-abbrevs . 1)
  (custom-theme-visit-theme . 1)
+ (customize-face . 1)
+ (customize-themes . 1)
+ (linum-mode . 1)
 )

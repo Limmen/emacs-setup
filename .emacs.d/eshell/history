@@ -1,2 +1,13 @@
 cd ..
 cp -r .emacs.d ~/emacs-setup/
+cp -r .emacs.d ~/emacs-setup/
+git add --all
+git clone https://limmen_6@bitbucket.org/limmen_6/distributed_networking_project.git
+LS
+LS
+ls
+rm -rf react
+clear
+db
+prolog
+db

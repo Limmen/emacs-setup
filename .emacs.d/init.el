@@ -128,7 +128,7 @@
 (global-set-key (kbd "<f5>") 'goto-line)
 (global-set-key  (kbd "C-<return>") 'mark-page)
 (global-set-key  (kbd "C-M-¤") 'dired-do-query-replace-regexp)
-(global-set-key  (kbd "TAB") 'yas-expand)
+;(global-set-key  (kbd "TAB") 'yas-expand)
 (global-set-key (kbd "C-1") (lambda()
 			       (interactive)
 			       (show-all)
@@ -158,3 +158,10 @@
    "<link rel=\"stylesheet\" type=\"text/css\"
 href=\"/home/kim/Dropbox/org/solarized-light.css\"
  />")
+
+;;erlang mode
+(setq load-path (cons  "/usr/local/otp/lib/tools-<ToolsVer>/emacs"
+   load-path))
+   (setq erlang-root-dir "/usr/local/otp")
+   (setq exec-path (cons "/usr/local/otp/bin" exec-path))
+   (require 'erlang-start)

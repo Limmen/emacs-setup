@@ -1,8 +1,8 @@
 
 ;; ----- smex-history -----
 (
- erlang-indent-current-buffer
- erlang-indent-command
+ yas-expand
+ yas-insert-snippet
  erlang-mode
  list-packages
  linum-mode
@@ -20,8 +20,8 @@
  (linum-mode . 36)
  (eshell . 6)
  (yas-new-snippet . 1)
- (yas-expand . 3)
- (yas-insert-snippet . 4)
+ (yas-expand . 5)
+ (yas-insert-snippet . 6)
  (yas-exit-snippet . 2)
  (info . 1)
  (js-mode . 1)

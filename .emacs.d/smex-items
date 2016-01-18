@@ -1,23 +1,23 @@
 
 ;; ----- smex-history -----
 (
- yas-expand
- yas-insert-snippet
- erlang-mode
  list-packages
+ org-bibtex
+ bibtex-url
+ org-ref
  linum-mode
- eshell
- prolog-mode
+ visual-line-mode
+ yas-expand
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 7)
+ (list-packages . 10)
  (list-abbrevs . 1)
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
- (linum-mode . 36)
+ (linum-mode . 40)
  (eshell . 6)
  (yas-new-snippet . 1)
  (yas-expand . 5)
@@ -30,4 +30,9 @@
  (erlang-mode . 2)
  (erlang-indent-command . 3)
  (erlang-indent-current-buffer . 1)
+ (visual-line-mode . 2)
+ (org-ref . 13)
+ (org-ref-insert-cite-link . 2)
+ (bibtex-url . 1)
+ (org-bibtex . 1)
 )

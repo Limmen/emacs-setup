@@ -2,30 +2,30 @@
 ;; ----- smex-history -----
 (
  list-packages
- org-bibtex
- bibtex-url
- org-ref
+ cider-jack-in
  linum-mode
- visual-line-mode
- yas-expand
+ calc
+ eval-buffer
+ eval-last-sexp
+ eshell
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 10)
+ (list-packages . 12)
  (list-abbrevs . 1)
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
- (linum-mode . 40)
- (eshell . 6)
+ (linum-mode . 67)
+ (eshell . 19)
  (yas-new-snippet . 1)
  (yas-expand . 5)
  (yas-insert-snippet . 6)
  (yas-exit-snippet . 2)
  (info . 1)
  (js-mode . 1)
- (calc . 1)
+ (calc . 3)
  (prolog-mode . 2)
  (erlang-mode . 2)
  (erlang-indent-command . 3)
@@ -35,4 +35,15 @@
  (org-ref-insert-cite-link . 2)
  (bibtex-url . 1)
  (org-bibtex . 1)
+ (magit-remote-add . 2)
+ (magit-push . 13)
+ (magit-merge . 1)
+ (dired-do-query-replace-regexp . 1)
+ (wdired-change-to-wdired-mode . 1)
+ (eval-buffer . 160)
+ (eval-region . 2)
+ (test-fun . 1)
+ (eval-last-sexp . 3)
+ (eval-expression . 8)
+ (cider-jack-in . 8)
 )

@@ -29,6 +29,31 @@
 (require 'smex)
 (require 'dired+)
 (require 'autopair)
+;(require 'paredit)
+(require 'rainbow-delimiters)
+(require 'popup)
+;; General Auto-Complete
+(require 'auto-complete-config)
+(setq ac-delay 0.0)
+(setq ac-quick-help-delay 0.5)
+(ac-config-default)
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+
+;; ac-cider
+(require 'ac-cider)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-to-list 'ac-modes 'cider-mode)
+(add-to-list 'ac-modes 'cider-repl-mode)
+
+;Poping-up contextual documentation
+(eval-after-load "cider"
+  '(define-key cider-mode-map (kbd "C-c C-d") 'ac-cider-popup-doc))
+
+;(add-hook 'clojure-mode-hook 'paredit-mode)
+
+;; rainbow delimiters
+;(global-rainbow-delimiters-mode)
 
 ;Default global modes
 (show-paren-mode 1)
@@ -128,11 +153,13 @@
 (global-set-key (kbd "<f5>") 'goto-line)
 (global-set-key  (kbd "C-<return>") 'mark-page)
 (global-set-key  (kbd "C-M-¤") 'dired-do-query-replace-regexp)
+(global-set-key  (kbd "C-M-#") 'wdired-change-to-wdired-mode)
 (global-set-key  (kbd "C-§") 'yas-expand)
 (global-set-key (kbd "C-1") (lambda()
 			       (interactive)
 			       (show-all)
 			       (artist-mode)))
+(global-set-key [f9] 'cider-jack-in)
 
 ;;org-mode settings
 ;; active Babel languages

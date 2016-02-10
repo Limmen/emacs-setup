@@ -1,0 +1,20 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: react-component
+# key: react
+# binding: direct-keybinding
+# --
+var React = require("react");
+var Router = require("react-router");
+var Route = Router.Route;
+var Link = Router.Link;
+var RouteHandler = Router.RouteHandler;
+
+var App = React.createClass({
+    render: function() {
+return(
+        $1
+       );
+    }
+});
+
+module.exports = App;

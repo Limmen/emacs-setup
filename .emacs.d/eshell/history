@@ -1,29 +1,3 @@
-./1.el
-ls
-cd ..
-rm -rf AoK
-git clone https://limmen_6@bitbucket.org/limmen_6/aok.git
-rm -rf aok
-git clone https://limmen_6@bitbucket.org/limmen_6/aok.git
-make clean
-cd Lab1
-make clean
-ls
-cd ~/workspace/aok/L*
-ls
-make clean
-make
-make test
-sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-upd
-sudo apt-get update
-sudo apt-get install skype
-sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-sudo apt-get update
-javac Hello.java
-java Hello
-prolog
-git rm --cached target
 cd workspace/java/IV1201
 git rm --cached target
 git rm --cached target -r
@@ -126,3 +100,29 @@ lein run
 lein run
 lein test
 lein test
+cp -r ~/.emacs.d emacs-setup/
+cd ..
+clear
+cp -r .emacs.d /emacs-setup/
+cp -r .emacs.d emacs-setup/
+lein new app 12
+ls
+lein new app clojure-solution
+ls
+cd cloj*
+lein compile
+lein compile
+lein run
+lein run
+lein run
+lein run
+lein run
+lein run
+lein run
+lein run
+lein run
+lein test
+lein
+lein test run
+lein test
+lein run

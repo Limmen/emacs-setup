@@ -41,6 +41,9 @@
 (ac-config-default)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
+(require 'multiple-cursors)
+
+
 ;; ac-cider
 (require 'ac-cider)
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
@@ -162,22 +165,23 @@
 			       (show-all)
 			       (artist-mode)))
 (global-set-key [f9] 'cider-jack-in)
+(global-set-key (kbd "C-x F") 'mc/edit-lines)
 
 ;;org-mode settings
 ;; active Babel languages
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((gnuplot . t)
- (js . t)
- (calc . t)
- (C . t)
- (sh . t)
- (python . t)
- (java . t)
- (latex . t)
- (prolog . t)
-;;(erlang . t)
- (ditaa . t)))
+   (js . t)
+   (calc . t)
+   (C . t)
+   (sh . t)
+   (python . t)
+   (java . t)
+   (latex . t)
+   (prolog . t)
+   ;;(erlang . t)
+   (ditaa . t)))
 ;; add additional languages with '((language . t)))
 
 (setq org-src-fontify-natively t)

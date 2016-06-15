@@ -166,6 +166,8 @@
 			       (artist-mode)))
 (global-set-key [f9] 'cider-jack-in)
 (global-set-key (kbd "C-x F") 'mc/edit-lines)
+(global-set-key (kbd "<up>") 'comint-previous-input) ; previous history
+(global-set-key (kbd "<down>") 'comint-next-input) ; reverse history
 
 ;;org-mode settings
 ;; active Babel languages
@@ -214,3 +216,23 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
 
 ;;Avoid y/n questions when exporting source-blocks from org-mode
 (setq org-confirm-babel-evaluate nil)
+
+
+;; Binding keys when erlang-mode is active
+(defun erlang-shell-config ()
+  "For use in `erlang-shell-hook'."
+  (local-set-key (kbd "<up>") 'comint-previous-input) ; previous history
+  (local-set-key (kbd "<down>") 'comint-next-input) ; reverse history
+  ;; more here
+  )
+
+;; add to hook
+(add-hook 'erlang-shell-hook 'erlang-shell-config)
+(put 'erase-buffer 'disabled nil)
+
+
+(defun eshell/clear ()
+  "04Dec2001 - sailor, to clear the eshell buffer."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))

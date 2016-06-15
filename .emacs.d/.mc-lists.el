@@ -3,9 +3,12 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        beginning-of-visual-line
         end-of-visual-line
+        org-beginning-of-line
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        yas-expand
         ))

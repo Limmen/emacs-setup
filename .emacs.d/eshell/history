@@ -1,58 +1,3 @@
-cd workspace/java/IV1201
-git rm --cached target
-git rm --cached target -r
-git rm --cached target -r -f
-cd ..
-mv IV1201 IV1201_2
-git clone https://github.com/Limmen/IV1201
-cd IV1201
-ls
-git rm --cached target -r
-biblatex report
-bibtex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-bibtex report
-bibtex report
-pdflatex report
-bibtex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-bibtex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-pdflatex report
-pdflatex report
-pdflatex report
-cp -r .emacs.d emacs-setup/
-lein new compojure my-webapp
-ls
-cd my_webapp
-cd my-webapp
-ls
-lein repl
-lein ring server
-cd ..
-lein new todo-rest
-ls
-rm -rf ./*
-lein new compojure todoapp
-lein ring server
-cd todoapp
-lein ring server
-lein ring server
 lein ring server
 at clojure.lang.Compiler$InvokeExpr.parse(Compiler.java:3737)xit
 lein ring server
@@ -126,3 +71,58 @@ lein
 lein test run
 lein test
 lein run
+cp -r .emacs.d emacs-setup/
+ls
+cd ..
+ls
+grunt run
+ls
+node web.js
+grunt build
+node web.js
+clear
+cd ..
+cd ..
+cd ..
+cd ..
+cd web
+ls
+cd mov*
+ls
+node server.js
+npm install
+ls
+sudo npm install
+npm init
+make test
+gcc -std=c99 test.c -o test
+ls
+./test
+gcc -std=c99 test.c -o test
+./test
+ls
+chmod u+rwx run.sh
+./run.sh
+./run
+./run.sh
+prolog
+erl
+erl
+clear
+clear
+cd ..
+cd ..
+git add --all
+git commit -m "add erlang solutions to easy"
+git push origin master
+erl
+ls
+clear
+ls
+clear
+clear
+.
+Bilder                 Dokument           GlassFish_Server  Mallar      Publikt           bin        global-groovy.log  programs                       soapui.log           workspace
+clear
+clear
+clear

@@ -43,6 +43,7 @@
 
 (require 'multiple-cursors)
 
+(require 'erlang-flymake)
 
 ;; ac-cider
 (require 'ac-cider)
@@ -236,3 +237,5 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
+
+

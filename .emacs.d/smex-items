@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- eshell
- list-packages
- package-install
  erlang-shell
- calc
- eval-buffer
+ run-erlang
+ inferior-erlang
  linum-mode
+ calc
+ eshell
+ eval-buffer
 )
 
 ;; ----- smex-data -----
@@ -17,7 +17,7 @@
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
- (linum-mode . 126)
+ (linum-mode . 127)
  (eshell . 33)
  (yas-new-snippet . 1)
  (yas-expand . 7)
@@ -25,7 +25,7 @@
  (yas-exit-snippet . 2)
  (info . 1)
  (js-mode . 1)
- (calc . 7)
+ (calc . 8)
  (prolog-mode . 2)
  (erlang-mode . 2)
  (erlang-indent-command . 3)
@@ -51,9 +51,12 @@
  (magit-pull . 1)
  (calc-reset . 1)
  (org-mode . 7)
- (erlang-shell . 2)
+ (erlang-shell . 10)
  (comint-previous-input . 7)
  (package-install . 1)
  (edts-mode . 1)
  (edts-shell . 2)
+ (inferior-erlang . 1)
+ (run-erlang . 1)
+ (erlang-shell-display . 1)
 )

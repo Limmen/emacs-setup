@@ -238,4 +238,7 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
-
+;; example of setting env var named “ERL_LIVS”, by appending a new path to existing path
+(setenv "ERL_LIBS"
+        "/home/kim/Library/Erlang/lib"
+        )

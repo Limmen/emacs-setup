@@ -1,128 +1,128 @@
 clear
-rebar3 new
-rebar3 new app
+make run
 clear
-ls
-ls
-rm -rf dfs*
+make
+make
+make run
+make test
+make
+make test
+make
+make test
 clear
-rebar3 new app ftp_server
-ls
-cd ftp*
-ls
-rebar3 compile
-ls
-ls -al
+make
+make run
+clear
+make
+make run
+make
+make test
+clear
+maek
+make
+clear
+make
+make test
+make
+make test
+make
+make
+make test
+make
+make test
+make
+make test
+clear
+clear
 cd ..
 clear
-ls
-mv binary_tree old
-rebar3 new 
-rebar3 new app binary_tree
-mv old/*.erl .edts Makefile binary_tree/
-mv old/*.erl old/.edts old/Makefile binary_tree/
-cd old
-ls
-cd ..
-ls
+make
+make test
 clear
-rm -rf old*
-cd bin*
-ls
-mv *.erl src/
-ls
-rebar3 compile
-ls
-rebar3 compile
-ls
-cd src
-ls
-cd ..
-cd ..
-ls
-cd bin*
-ls
-rebar3 compile
-ls
-cd apps
-ls
-cd my*
-ls
-rebar3 compile
-ls
-rebar3 new release binary_tree
 clear
-rebar3 new
-mv binary_tree old2
-rebar3 new lib binary_tree
-rebar3 eunit
 ls
-cd bin*
-cd binary_tree
+make
+make test
 clear
-rebar3 euni
-npm ini
-clear
-rebar3 dialyzer
-rebar3 eunit
-ls
-rebar3 eunit
-ls
-rebar3 eunit
-ls
-rebar3 compile
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-cd test
-ls
-rebar3 eunit
-cd ..
-rebar3 eunit
-rebar3 eunit
-rebar3 compile
-rebar3 clean
-rebar3 compile
-rebar3 eunit
-rebar3  edoc
-rebar3 escriptize
-ls
-rebar3 clean
-rebar3 compile
-./_build/default/bin
-cd -
-./_build/default/bin/binary_tree
-clear
-erl -pa _build
+make run
 lear
 clear
-erl -pa _build
+make
+make test
 clear
-rebar3 shell
+make
+make test
+make
+make test
+make
+make test
 clear
-cd ..ls
+clear
+make
+make
+clear
+make test
+make run
+clear
+make
+make test
+clear
+erl
+make
+clear
 cd ..
-ls
-cd binary_tree
-ls
-rebar3 shell
-ls
+make
+make test
+clear
+map:all_nodes([{berlin,[london,paris]}]).
+make run
+clear
+make
+make run
+make test
+clear
+make
+make urn
+make run
+clear
+make
+make test
+clear
+clear
+make
+make run
+clear
+make
+make run
+make
+make test
+make
+make test
+clear
 cd ..
 cd ..
+git add --all
+git commit -m "update routy"
+git push origin master
+make benchmark
+clear
+clear
+make benchmark
+clear
+make benchmark
+clear
+make
+make
+make benchmark
+clear
+make benchmark
+make benchmark
+echo $ERL_LIBS
+cd workspace/erlang/ID*/proj*
+cd workspace/erlang/ID*/rudy/proj*
+cd ~/workspace/erlang/ID*/rudy/proj*
+ls
 clear
 ls
-rebar3 shell
+make rudy
 clear
-rebar3 shell --apps binary_tree
-rebar3 local upgrade
-rebar3 unstable upgrade
-clear
-rebar3 shell
-clear
-erl -pa _build/default/lib/binary_tree/ebin
-cd ..
-cd ..
-ls
-clear
-rebar3 shell
-../rebar3/rebar3 shell

@@ -1,128 +1,128 @@
+rebar3 shell
 clear
-make run
+rebar3 compile
+rebar3 dialyzer
+rebar3 shell
+rebar3 compile
+rebar3 shell
+rebar3 compile
+rebar3 shell
+rebar3 compile
+rebar3 shell
 clear
-make
-make
-make run
-make test
-make
-make test
-make
-make test
-clear
-make
-make run
-clear
-make
-make run
-make
-make test
-clear
-maek
-make
-clear
-make
-make test
-make
-make test
-make
-make
-make test
-make
-make test
-make
-make test
-clear
+rebar3 compile
+rebar3 shell
 clear
 cd ..
-clear
-make
-make test
-clear
-clear
-ls
-make
-make test
-clear
-make run
-lear
-clear
-make
-make test
-clear
-make
-make test
-make
-make test
-make
-make test
-clear
-clear
-make
-make
-clear
-make test
-make run
-clear
-make
-make test
-clear
-erl
-make
-clear
-cd ..
-make
-make test
-clear
-map:all_nodes([{berlin,[london,paris]}]).
-make run
-clear
-make
-make run
-make test
-clear
-make
-make urn
-make run
-clear
-make
-make test
-clear
-clear
-make
-make run
-clear
-make
-make run
-make
-make test
-make
-make test
-clear
 cd ..
 cd ..
 git add --all
-git commit -m "update routy"
+git commit -m "add first intermediate solution"
 git push origin master
-make benchmark
-clear
-clear
-make benchmark
-clear
-make benchmark
-clear
-make
-make
-make benchmark
-clear
-make benchmark
-make benchmark
-echo $ERL_LIBS
-cd workspace/erlang/ID*/proj*
-cd workspace/erlang/ID*/rudy/proj*
-cd ~/workspace/erlang/ID*/rudy/proj*
+cd ..
+cd ..
+cd ..
+git add --all
+git commit -m "update 19"
+git push origin master
+cd ..
+rm -rf erlangf
+rm -rf erlang
+rebar3 new lib erlang
+cd  erlang
+cd ..
+rm -rf erlang
+mkdir erlang
+cd erlang
+rebar3 new lib '4'
+ls
+cd 4
 ls
 clear
+rebar3 compile
+rebar3 compile
+rebar3 test
+rebar3 eunit
+rebar3 shell
+clear
+rebar3 compile
+rebar3 eunit
+rebar3 shell
+clear
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 compile
+rebar3 eunit
+rebar3 compile
+rebar3 eunit
+rebar3 compile
+rebar3 eunit
+rebar3 compile
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 compile
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 deps
+rebar3 proper
+rebar3 shell
+rebar3 proper
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 shell
+clear
+rebar3 eunit
+rebar3 eunit
+rebar3 compile
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+rebar3 shell
+rebar3 eunit
+rebar3 eunit
+rebar3 eunit
+cd ..
+cd ..
+cd ..
+cd ..
+git add --all
+git commit -m "add 4/intermediate"
+git push origin master
+cd int*/5
+cd erlang
 ls
-make rudy
+rebar3 new lib 5
+ls
+cd ..
+rebar3 compile
+rebar3 shell
+rebar3 compile
+rebar3 shell
+rebar3 compile
+rebar3 shell
+clear
+erl
+clear
+rebar3 shell
+clear
+cd ..
+cd ..
+cd ..
+cd ..
+git add --all
+git commit -m "add 5 intermediate"
+git push origin master
+ls
 clear

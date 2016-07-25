@@ -242,3 +242,22 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
 (setenv "ERL_LIBS"
         "/home/kim/Library/Erlang/lib"
         )
+
+
+;; tabbar
+(require 'tabbar)
+(tabbar-mode t)
+(setq tabbar-cycle-scope 'tabs)
+(setq tabbar-buffer-groups-function
+      (lambda ()
+        (let ((dir (expand-file-name default-directory)))
+          (cond ((member (buffer-name) '("*Completions*"
+                                         "*scratch*"
+                                         "*Messages*"
+                                         "*Ediff Registry*"))
+                 (list "#misc"))
+                ((string-match-p "/.emacs.d/" dir)
+                 (list ".emacs.d"))
+                (t (list dir))))))
+(global-set-key [C-iso-lefttab] 'tabbar-backward)
+(global-set-key [C-tab] 'tabbar-forward)

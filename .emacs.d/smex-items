@@ -1,27 +1,27 @@
 
 ;; ----- smex-history -----
 (
+ yas-expand
+ yas/expand
+ yas-insert-snippet
+ yas-new-snippet
+ list-packages
  eshell
  erlang-shell
- erase-buffer
- tempo-template-erlang-gen-lib
- tempo-template-erlang-large-header
- tempo-template-erlang-after
- tempo-template-erlang-ts-test-suite
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 13)
+ (list-packages . 14)
  (list-abbrevs . 1)
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
  (linum-mode . 131)
- (eshell . 85)
- (yas-new-snippet . 1)
- (yas-expand . 7)
- (yas-insert-snippet . 6)
+ (eshell . 84)
+ (yas-new-snippet . 3)
+ (yas-expand . 9)
+ (yas-insert-snippet . 7)
  (yas-exit-snippet . 2)
  (info . 1)
  (js-mode . 1)
@@ -77,4 +77,5 @@
  (tempo-template-erlang-ts-test-suite . 1)
  (tempo-template-erlang-after . 1)
  (tempo-template-erlang-large-header . 2)
+ (yas/expand . 1)
 )

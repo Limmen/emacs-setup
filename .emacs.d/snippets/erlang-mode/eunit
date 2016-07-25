@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: eunit
+# key: eunit
+# binding: direct-keybinding
+# --
+
+%% API exports
+-compile(export_all).
+%% Includes
+-include_lib("eunit/include/eunit.hrl").

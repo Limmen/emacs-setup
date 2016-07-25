@@ -40,6 +40,8 @@
      erlang-skel-normal-header erlang-skel-header)
     ("Large Header"  "large-header"
      erlang-skel-large-header erlang-skel-header)
+    ("Eunit” "eunit"
+     erlang-skel-large-header erlang-skel-header)
     ()
     ("Small Server"   "small-server"
      erlang-skel-small-server erlang-skel-header)

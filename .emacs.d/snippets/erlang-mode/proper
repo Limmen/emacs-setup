@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: proper
+# key: proper
+# binding: direct-keybinding
+# --
+
+%% API
+-compile(export_all).
+%% Includes
+-include_lib("proper/include/proper.hrl").

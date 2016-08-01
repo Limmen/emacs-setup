@@ -1,56 +1,3 @@
-rebar3 shell
-clear
-rebar3 compile
-rebar3 dialyzer
-rebar3 shell
-rebar3 compile
-rebar3 shell
-rebar3 compile
-rebar3 shell
-rebar3 compile
-rebar3 shell
-clear
-rebar3 compile
-rebar3 shell
-clear
-cd ..
-cd ..
-cd ..
-git add --all
-git commit -m "add first intermediate solution"
-git push origin master
-cd ..
-cd ..
-cd ..
-git add --all
-git commit -m "update 19"
-git push origin master
-cd ..
-rm -rf erlangf
-rm -rf erlang
-rebar3 new lib erlang
-cd  erlang
-cd ..
-rm -rf erlang
-mkdir erlang
-cd erlang
-rebar3 new lib '4'
-ls
-cd 4
-ls
-clear
-rebar3 compile
-rebar3 compile
-rebar3 test
-rebar3 eunit
-rebar3 shell
-clear
-rebar3 compile
-rebar3 eunit
-rebar3 shell
-clear
-rebar3 eunit
-rebar3 eunit
 rebar3 eunit
 rebar3 compile
 rebar3 eunit
@@ -126,3 +73,56 @@ git commit -m "add 5 intermediate"
 git push origin master
 ls
 clear
+rebar3 new lib 6
+rebar3 new lib '7'
+ls
+cd 7
+rebar3 compile
+rebar3 shell
+cd ..
+cd _build/def*
+ls
+cd lib
+ls
+cd 7/ebin
+ls
+erl -name client@37.123.167.63 -setcookie mandel -connect_all false
+erl
+cd ..
+cd ..
+cd ..
+git add --all
+git commit -m "add intermediate/8"
+git push origin master
+make clean
+ls
+make
+ls
+make
+make
+make
+clear
+make
+make
+make
+clear
+cd ..
+cd ..
+git add --all
+git commit -m "update makefiles"
+git push origin master
+ls
+cp -r template loggy
+ls
+git add --all
+git commit -m "code skeleton for loggy"
+git push origin master
+cd ..
+cd ..
+cd dail*
+git add --all
+git commit -m "add intermediate 9"
+git push origin master
+rebar3 new app test2
+rebar3 new lib test3
+rm -rf test2 test3

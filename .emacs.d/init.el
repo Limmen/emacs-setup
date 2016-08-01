@@ -261,3 +261,6 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
                 (t (list dir))))))
 (global-set-key [C-iso-lefttab] 'tabbar-backward)
 (global-set-key [C-tab] 'tabbar-forward)
+
+(setq user-full-name "Kim Hammar")
+(setq user-mail-address "kimham@kth.se")

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- tempo-template-erlang-gen-lib
+ erc
+ linum-mode
+ org-mode
+ org-ref
+ erlang-mode
+ eval-buffer
  eshell
- erlang-shell
- dired-sort-toggle-or-edit
- prolog-mode
- list-packages
- calc
 )
 
 ;; ----- smex-data -----
@@ -17,8 +17,8 @@
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
- (linum-mode . 132)
- (eshell . 93)
+ (linum-mode . 137)
+ (eshell . 94)
  (yas-new-snippet . 3)
  (yas-expand . 9)
  (yas-insert-snippet . 7)
@@ -27,11 +27,11 @@
  (js-mode . 1)
  (calc . 14)
  (prolog-mode . 4)
- (erlang-mode . 2)
+ (erlang-mode . 3)
  (erlang-indent-command . 3)
  (erlang-indent-current-buffer . 1)
  (visual-line-mode . 2)
- (org-ref . 13)
+ (org-ref . 14)
  (org-ref-insert-cite-link . 2)
  (bibtex-url . 1)
  (org-bibtex . 1)
@@ -50,7 +50,7 @@
  (ac-cider-popup-doc . 1)
  (magit-pull . 1)
  (calc-reset . 1)
- (org-mode . 9)
+ (org-mode . 35)
  (erlang-shell . 54)
  (comint-previous-input . 7)
  (package-install . 1)
@@ -66,16 +66,17 @@
  (calc-log . 3)
  (dired-sort-toggle-or-edit . 2)
  (erlang-skel-init . 1)
- (tempo-template-erlang-gen-lib . 19)
+ (tempo-template-erlang-gen-lib . 25)
  (erase-buffer . 2)
- (tempo-template-erlang-application . 2)
- (tempo-template-erlang-module . 2)
- (tempo-template-erlang-supervisor . 1)
+ (tempo-template-erlang-application . 4)
+ (tempo-template-erlang-module . 3)
+ (tempo-template-erlang-supervisor . 5)
  (tempo-template-erlang-author . 1)
  (tempo-template-erlang-small-server . 1)
- (tempo-template-erlang-generic-server . 1)
+ (tempo-template-erlang-generic-server . 3)
  (tempo-template-erlang-ts-test-suite . 1)
  (tempo-template-erlang-after . 1)
  (tempo-template-erlang-large-header . 2)
  (yas/expand . 1)
+ (erc . 6)
 )

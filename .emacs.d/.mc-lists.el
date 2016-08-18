@@ -6,6 +6,7 @@
         beginning-of-visual-line
         end-of-visual-line
         org-beginning-of-line
+        org-self-insert-command
         ))
 
 (setq mc/cmds-to-run-once

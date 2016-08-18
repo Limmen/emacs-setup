@@ -264,3 +264,6 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
 
 (setq user-full-name "Kim Hammar")
 (setq user-mail-address "kimham@kth.se")
+
+(load "~/Dropbox/.irc")
+

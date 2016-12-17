@@ -1,8 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: org
-# key: org
-# binding: direct-keybinding
-# --
-#+INFOJS_OPT: view:info
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/kim/Dropbox/org/solarized-light.css" />
-#+TITLE: $1

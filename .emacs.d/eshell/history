@@ -1,128 +1,128 @@
-rebar3 compile
-rebar3 eunit
-rebar3 compile
-rebar3 eunit
-rebar3 compile
-rebar3 eunit
-rebar3 compile
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 compile
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 deps
-rebar3 proper
-rebar3 shell
-rebar3 proper
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 shell
+epstopdf ac_protocol*
+epstopdf ac_protocol.eps
 clear
-rebar3 eunit
-rebar3 eunit
-rebar3 compile
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-rebar3 shell
-rebar3 eunit
-rebar3 eunit
-rebar3 eunit
-cd ..
-cd ..
-cd ..
+ls
+epstopdf ac_protocol.eps
+epstopdf ac_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf ac_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf ac_protocol.eps
+epstopdf ac_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf ac_protocol.eps
+epstopdf ac_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf tg_protocol.eps
+epstopdf ab_protocol.eps
+epstopdf ab_protocol.eps
+epstopdf ab_protocol.eps
+epstopdf uh_protocol.eps
+ls
+epstopdf tg_protocol.eps
+epstopdf ac_protocol.eps
+epstopdf aq_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf aq_protocol.eps
+epstopdf aq_protocol.eps
+epstopdf ac_protocol.eps
+epstopdf as_protocol.eps
+rm -rf a_protocol.fg
+epstopdf a_protocol.eps
+epstopdf a_protocol.eps
+epstopdf as_protocol.eps
+epstopdf as_protocol.eps
+epstopdf aq_protocol.eps
+epstopdf aq_protocol.eps
+epstopdf as_protocol.eps
+epstopdf ab_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf *.eps
+epstopdf --help
+clear
+ls
+epstopdf ac_protocol.eps
+epstopdf uh_protocol.eps
+epstopdf qm_protocol.eps
+epstopdf aq_protocol.eps
+epstopdf tg_protocol.eps
+epstopdf ab_protocol.eps
+epstopdf as_protocol.eps
+epstopdf a_protocol.eps
 cd ..
 git add --all
-git commit -m "add 4/intermediate"
+git commit -m "update report for project"
 git push origin master
-cd int*/5
-cd erlang
 ls
-rebar3 new lib 5
+epstopdf artist_auction_template.eps
+epstopdf curator_auction_template.eps
+epstopdf build_virtual_tour_temp.eps
+epstopdf visit_artifact.eps
+epstopdf find_virtual_tour.eps
+clear
 ls
-cd ..
-rebar3 compile
-rebar3 shell
-rebar3 compile
-rebar3 shell
-rebar3 compile
-rebar3 shell
-clear
-erl
-clear
-rebar3 shell
-clear
-cd ..
-cd ..
-cd ..
+epstopdf artist_auction_sequence.eps
+epstopdf curator_auction_sequence.eps
+epstopdf build_virtual_tour.eps
+epstopdf find_virtual_tour.eps
+epstopdf find_virtual_tour_sequence.eps
+epstopdf visit_artifact_sequence.eps
+epstopdf visit_artifact_sequence.eps
+epstopdf find_virtual_tour_sequence.eps
+epstopdf find_virtual_tour_sequence.eps
+epstopdf visit_artifact_sequence.eps
+ls
+epstopdf artistmanager_state.eps
+epstopdf tourguide_state.eps
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+bibtex report
+bibtex report
+bibtex report
+pdflatex report
+bibtex report
+bibtex report
+bibtex report
+bibtex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
 cd ..
 git add --all
-git commit -m "add 5 intermediate"
+git commit -m "update project report"
 git push origin master
-ls
+git push origin master
+git push origin master
 clear
-rebar3 new lib 6
-rebar3 new lib '7'
-ls
-cd 7
-rebar3 compile
-rebar3 shell
-cd ..
-cd _build/def*
-ls
-cd lib
-ls
-cd 7/ebin
-ls
-erl -name client@37.123.167.63 -setcookie mandel -connect_all false
-erl
-cd ..
-cd ..
-cd ..
-git add --all
-git commit -m "add intermediate/8"
-git push origin master
-make clean
-ls
-make
-ls
-make
-make
-make
+git pull origin master
 clear
-make
-make
-make
+epstopdf ac_protocol.eps
+epstopdf ab_protocol.eps
+epstopdf build*temp*.eps
+epstopdf visit_artifact.eps
+cd ..
 clear
-cd ..
-cd ..
 git add --all
-git commit -m "update makefiles"
+git commit -m "update project report"
 git push origin master
-ls
-cp -r template loggy
-ls
-git add --all
-git commit -m "code skeleton for loggy"
-git push origin master
-cd ..
-cd ..
-cd dail*
-git add --all
-git commit -m "add intermediate 9"
-git push origin master
-rebar3 new app test2
-rebar3 new lib test3
-rm -rf test2 test3
-erl
+3

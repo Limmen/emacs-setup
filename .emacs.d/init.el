@@ -182,7 +182,7 @@
    (python . t)
    (java . t)
    (latex . t)
-   (prolog . t)
+   ;;   (prolog . t)
    ;;(erlang . t)
    (ditaa . t)))
 ;; add additional languages with '((language . t)))
@@ -267,3 +267,15 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
 
 (load "~/Dropbox/.irc")
 
+;;(autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
+;;(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+
+(load-file "~/.emacs.d/prolog.el")
+
+(autoload 'run-prolog "prolog" "Start a Prolog sub-process." t)
+(autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
+(autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
+(setq prolog-system 'swi)
+(setq auto-mode-alist (append '(("\\.pl$" . prolog-mode)
+                                ("\\.m$" . mercury-mode))
+                              auto-mode-alist))

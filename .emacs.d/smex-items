@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- erc
+ run-prolog
  linum-mode
- org-mode
- org-ref
- erlang-mode
- eval-buffer
+ calc
  eshell
+ prolog-mode
+ erlang-mode
+ dired-sort-toggle-or-edit
 )
 
 ;; ----- smex-data -----
@@ -17,17 +17,17 @@
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
- (linum-mode . 137)
- (eshell . 94)
+ (linum-mode . 161)
+ (eshell . 130)
  (yas-new-snippet . 3)
  (yas-expand . 9)
  (yas-insert-snippet . 7)
  (yas-exit-snippet . 2)
  (info . 1)
  (js-mode . 1)
- (calc . 14)
- (prolog-mode . 4)
- (erlang-mode . 3)
+ (calc . 19)
+ (prolog-mode . 34)
+ (erlang-mode . 5)
  (erlang-indent-command . 3)
  (erlang-indent-current-buffer . 1)
  (visual-line-mode . 2)
@@ -64,7 +64,7 @@
  (calc-lcm . 1)
  (calc-log10 . 1)
  (calc-log . 3)
- (dired-sort-toggle-or-edit . 2)
+ (dired-sort-toggle-or-edit . 3)
  (erlang-skel-init . 1)
  (tempo-template-erlang-gen-lib . 25)
  (erase-buffer . 2)
@@ -78,5 +78,8 @@
  (tempo-template-erlang-after . 1)
  (tempo-template-erlang-large-header . 2)
  (yas/expand . 1)
- (erc . 6)
+ (erc . 11)
+ (pong . 1)
+ (tramp-cleanup-this-connection . 1)
+ (run-prolog . 8)
 )

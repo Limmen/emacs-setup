@@ -279,3 +279,14 @@ href=\"/home/kim/Dropbox/org/solarized-light.css\"
 (setq auto-mode-alist (append '(("\\.pl$" . prolog-mode)
                                 ("\\.m$" . mercury-mode))
                               auto-mode-alist))
+
+;; associate xml, xsd, etc with nxml-mode
+(add-to-list 'auto-mode-alist (cons (concat "\\." (regexp-opt '("xml" "xsd" "rng" "xslt" "xsl") t) "\\'") 'nxml-mode))
+
+;;set the automplete flag
+(setq nxml-slash-auto-complete-flag t)
+
+
+(add-hook 'LaTeX-mode-hook 'flyspell-mode) ;start flyspell-mode
+(setq ispell-dictionary "british")    ;set the default dictionary
+(add-hook 'LaTeX-mode-hook 'ispell)   ;start ispell

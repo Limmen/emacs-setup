@@ -1,0 +1,15 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ditaa
+# key: ditaa
+# binding: direct-keybinding
+# --
+
+Built in Color codes. Option2: use Hexvalues like cXXX.
+/-------------+-------------\
+|cRED RED     |cBLU BLU     |
++-------------+-------------+
+|cGRE GRE     |cPNK PNK     |
++-------------+-------------+
+|cBLK BLK     |cYEL YEL     |
+\-------------+-------------/
+

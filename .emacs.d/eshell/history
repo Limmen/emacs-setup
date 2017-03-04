@@ -1,118 +1,3 @@
-epstopdf ac_protocol*
-epstopdf ac_protocol.eps
-clear
-ls
-epstopdf ac_protocol.eps
-epstopdf ac_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf ac_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf ac_protocol.eps
-epstopdf ac_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf ac_protocol.eps
-epstopdf ac_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf tg_protocol.eps
-epstopdf ab_protocol.eps
-epstopdf ab_protocol.eps
-epstopdf ab_protocol.eps
-epstopdf uh_protocol.eps
-ls
-epstopdf tg_protocol.eps
-epstopdf ac_protocol.eps
-epstopdf aq_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf aq_protocol.eps
-epstopdf aq_protocol.eps
-epstopdf ac_protocol.eps
-epstopdf as_protocol.eps
-rm -rf a_protocol.fg
-epstopdf a_protocol.eps
-epstopdf a_protocol.eps
-epstopdf as_protocol.eps
-epstopdf as_protocol.eps
-epstopdf aq_protocol.eps
-epstopdf aq_protocol.eps
-epstopdf as_protocol.eps
-epstopdf ab_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf *.eps
-epstopdf --help
-clear
-ls
-epstopdf ac_protocol.eps
-epstopdf uh_protocol.eps
-epstopdf qm_protocol.eps
-epstopdf aq_protocol.eps
-epstopdf tg_protocol.eps
-epstopdf ab_protocol.eps
-epstopdf as_protocol.eps
-epstopdf a_protocol.eps
-cd ..
-git add --all
-git commit -m "update report for project"
-git push origin master
-ls
-epstopdf artist_auction_template.eps
-epstopdf curator_auction_template.eps
-epstopdf build_virtual_tour_temp.eps
-epstopdf visit_artifact.eps
-epstopdf find_virtual_tour.eps
-clear
-ls
-epstopdf artist_auction_sequence.eps
-epstopdf curator_auction_sequence.eps
-epstopdf build_virtual_tour.eps
-epstopdf find_virtual_tour.eps
-epstopdf find_virtual_tour_sequence.eps
-epstopdf visit_artifact_sequence.eps
-epstopdf visit_artifact_sequence.eps
-epstopdf find_virtual_tour_sequence.eps
-epstopdf find_virtual_tour_sequence.eps
-epstopdf visit_artifact_sequence.eps
-ls
-epstopdf artistmanager_state.eps
-epstopdf tourguide_state.eps
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-pdflatex report
-bibtex report
-pdflatex report
-bibtex report
-bibtex report
-bibtex report
-bibtex report
-pdflatex report
-bibtex report
-bibtex report
-bibtex report
-bibtex report
-bibtex report
-pdflatex report
-bibtex report
-pdflatex report
-cd ..
-git add --all
-git commit -m "update project report"
-git push origin master
-git push origin master
-git push origin master
 clear
 git pull origin master
 clear
@@ -126,3 +11,118 @@ git add --all
 git commit -m "update project report"
 git push origin master
 3
+cd ..
+cd ..
+clear
+git pull origin master
+git remote add upstream https://github.com/kodsnack/advent_of_code_2016
+git pull upstream master
+clear
+git status
+git status
+git add limmen-prolog/day10
+git status
+git commit -m "day 10a and 10b prolog"
+git push origin master
+clear
+epstopdf artquoter_role.eps
+cd ..
+git add --all
+git commit -m "update project report"
+git push origin master
+git push origin master
+git push origin master
+clera
+clear
+cd ..
+git pull origin master
+clear
+cd limmen*
+ls
+git pull origin master
+git stash
+git checkout .
+git pull origin master
+git clean -f
+git pull origin master
+git reset
+git pull origin master
+git reset --hard HEAD
+clear
+git pull origin master
+cd ..
+rm -rf advent_of_code_2016/
+git clone https://github.com/Limmen/advent_of_code_2016
+cd advent_of_code_2016/
+ls
+cd limmen*
+ls
+clear
+ls
+mkdir day18
+cd ..
+git add --all
+git commit -m "day 18a 18b prolog"
+git push upstream master
+git remote
+git remote add upstream https://github.com/kodsnack/advent_of_code_2016
+git pull upstream master
+git log
+clear
+git push origin master
+bibtex notes
+ls
+pdflatex notes
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+clear
+ls
+epstopdf fig1.eps
+ls
+epstopdf fig1.eps
+epstopdf fig1.eps
+epstopdf fig1.eps
+epstopdf fig2.eps
+epstopdf fig2.eps
+epstopdf fig2.eps
+bibtex report
+pdflatex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+epstopdf fig1.eps
+ls
+epstopdf fig.eps
+clear
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+bibtex report
+pdflatex report
+cd ..
+cd images
+epstopdf *.eps
+ls
+cd ..
+cd images
+epstodpf sem_res.eps
+epstopdf sem_res.eps
+clear
+epstopdf cp.eps

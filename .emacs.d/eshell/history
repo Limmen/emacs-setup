@@ -28,3 +28,9 @@ ls
 cd scala/
 ls
 sbt
+sbt
+lear
+clear
+
+ls
+ls -al

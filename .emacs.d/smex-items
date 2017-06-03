@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ org-todo-list
+ org-agenda-schedule
+ LaTeX-mode
  eshell
  org-agenda
  todo-show
  calendar
- org-calendar-goto-agenda
- sbt-command
- ensime
 )
 
 ;; ----- smex-data -----
@@ -59,7 +59,7 @@
  (inferior-erlang . 1)
  (run-erlang . 1)
  (erlang-shell-display . 1)
- (LaTeX-mode . 3)
+ (LaTeX-mode . 4)
  (normal-mode . 1)
  (calc-lcm . 1)
  (calc-log10 . 1)
@@ -103,4 +103,6 @@
  (calendar . 2)
  (todo-show . 2)
  (org-agenda . 4)
+ (org-agenda-schedule . 2)
+ (org-todo-list . 1)
 )

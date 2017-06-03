@@ -163,3 +163,6 @@
                         (bookmarks . 5)
                         (projects . 5)
                         (agenda . 5)))
+
+(add-to-list 'org-modules "org-habit")
+(setq org-deadline-warning-days 14)

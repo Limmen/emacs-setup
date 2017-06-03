@@ -1,0 +1,1 @@
+("/hdd/Dropbox/org/" "/hdd/workspace/prolog/dailyprogrammer/" "/hdd/workspace/prolog/Advent-Of-Code16-Prolog/" "/hdd/workspace/erlang/erl_pengine/")

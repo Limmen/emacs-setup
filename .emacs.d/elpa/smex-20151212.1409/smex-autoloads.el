@@ -1,9 +1,9 @@
 ;;; smex-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "smex" "smex.el" (22613 21543 258690 53000))
+;;;### (autoloads nil "smex" "smex.el" (22834 36402 983197 358000))
 ;;; Generated autoloads from smex.el
 
 (autoload 'smex "smex" "\

@@ -1,44 +1,6 @@
-;; -*- emacs-lisp -*- <16/11/13 15:46:12 /home/kim/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <17/06/03 12:49:05 /home/kim/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
-((["sudo" "root" "192.168.1.53" nil nil]
-  ("test" "test")
-  ("remote-path"
-   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
-  ("stat" "\\stat")
-  ("file-exists" "test -e")
-  ("id" "/usr/bin/id")
-  ("gid-integer" 0)
-  ("ls" "/bin/ls --color=never")
-  ("gid-string" "root")
-  ("perl-file-spec" t)
-  ("perl-cwd-realpath" t)
-  ("perl" "\\perl")
-  ("~root" "/root")
-  ("ls-dired" t)
-  ("readlink" "\\readlink")
-  ("uid-integer" 0))
- (["sudo" "root" "192.168.1.53" nil "ssh:pi@192.168.1.53|"]
-  ("locale" "LC_ALL=en_US.utf8")
-  ("uname" "Linux 4.4.26-v7+")
-  ("remote-path"
-   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
-  ("remote-shell" "/bin/sh")
-  ("~root" "/root")
-  ("test" "test")
-  ("stat" "\\stat")
-  ("file-exists" "test -e")
-  ("id" "/usr/bin/id")
-  ("gid-string" "root")
-  ("perl-file-spec" t)
-  ("perl-cwd-realpath" t)
-  ("perl" "\\perl")
-  ("readlink" "\\readlink")
-  ("gid-integer" 0))
- (["scp" nil "ssh" nil nil]
-  nil)
- (["scp" nil "sudo" nil nil]
-  nil)
- (["ssh" "pi" "192.168.1.53" nil nil]
+((["scp" nil "adb" nil nil]
   nil))

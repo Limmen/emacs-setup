@@ -1,0 +1,5 @@
+package dailyprogrammer
+
+object Main extends App {
+  println("Hello")
+}

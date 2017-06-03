@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sbt template
+# key: sbt
+# --
+sbt new scala/scala-seed.g8

@@ -1,137 +1,15 @@
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(package-initialize)
+;;; package --- Main init file
+;;; Commentary:
+;;; This is my init file
 
-;;(load-theme 'solarized t)
+;;; Code:
 
-(require 'ace-jump-mode)
-(require 'yasnippet)
-(require 'ido-vertical-mode)
-(require 'smex)
-(require 'dired+)
-(require 'autopair)
+(add-to-list 'load-path (concat user-emacs-directory "elisp"))
 
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(ido-vertical-mode t)
-(show-paren-mode 1)
-(global-linum-mode 1)
-(nyan-mode 1)
-(global-visual-line-mode t)
-(autopair-global-mode) 
-(yas-global-mode 1)
-(setq-default indent-tabs-mode nil) 
-(setq-default tab-width 4) 
+(require 'base)
+(require 'base-theme)
+(require 'base-extensions)
+(require 'base-functions)
+(require 'base-global-keys)
 
-
-;;ditaa path
-(setq org-ditaa-jar-path "/usr/bin/ditaa")
-
-;; disable the gui.  Who uses emacs for toolbars and menus?
-;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-;(setq menu-prompting nil)
-
-(setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-
-;; Always ask for y/n keypress instead of typing out 'yes' or 'no'
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-(setq default-frame-alist (append (list 
-  '(width  . 81)  ; Width set to 81 characters 
-  '(height . 40)) ; Height set to 60 lines 
-  default-frame-alist)) 
-
-(setq inhibit-startup-message   t)   ; Don't want any startup message 
-(setq make-backup-files         nil) ; Don't want any backup files 
-(setq auto-save-list-file-name  nil) ; Don't want any .saves files 
-(setq auto-save-default         nil) ; Don't want any auto saving 
-
-(setq search-highlight           t) ; Highlight search object 
-(setq query-replace-highlight    t) ; Highlight query object 
-
-; number of characters until the fill column
-(setq fill-column 70)
-
-; specify the fringe width for windows -- this sets both the left and
-; right fringes to 10
-(require 'fringe)
-(fringe-mode 10)
-
-; lines which are exactly as wide as the window (not counting the
-; final newline character) are not continued. Instead, when point is
-; at the end of the line, the cursor appears in the right fringe.
-(setq overflow-newline-into-fringe t)
-
-; each line of text gets one line on the screen (i.e., text will run
-; off the left instead of wrapping around onto a new line)
-(setq truncate-lines t)
-; truncate lines even in partial-width windows
-(setq truncate-partial-width-windows t)
-
-; display line numbers to the right of the window
-(global-linum-mode t)
-; show the current line and column numbers in the stats bar as well
-(line-number-mode t)
-(column-number-mode t)
-
-; make sure transient mark mode is enabled (it should be by default,
-; but just in case)
-(transient-mark-mode t)
-
-; turn on mouse wheel support for scrolling
-(require 'mwheel)
-(mouse-wheel-mode t)
-
-
-
-(global-set-key (kbd "M-d") 'backward-kill-word)
-(global-set-key (kbd "C-d") 'delete-backward-char)
-(global-set-key (kbd "C-z") 'undo) 
-(global-set-key [S-dead-grave] "`")
-(global-set-key [S-dead-acute] "`")
-(global-set-key (kbd "<S-dead-circumflex>") "^")
-(global-set-key (kbd "<dead-tilde>") "~")
-(global-set-key (kbd "C-x <up>") 'windmove-up)
-(global-set-key (kbd "C-x <down>") 'windmove-down)
-(define-key global-map (kbd "M-s") 'ace-jump-mode)
-(global-set-key (kbd "C-x G") 'magit-status)
-(global-set-key (kbd "C-x <right>") 'windmove-right)
-(global-set-key (kbd "C-x <left>") 'windmove-left)
-(global-set-key (kbd "C-?") 'text-scale-increase)
-(global-set-key (kbd "C-_") 'text-scale-decrease)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "C-x G") 'magit-status)
-(global-set-key (kbd "C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-+") 'enlarge-window)
-(global-set-key (kbd "C--") 'shrink-window)
-(global-set-key (kbd "<f5>") 'goto-line)
-(global-set-key  (kbd "C-<return>") 'mark-page)
-(global-set-key (kbd "C-1") (lambda()
-			       (interactive)
-			       (show-all)
-			       (artist-mode)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (solarized-dark)))
- '(custom-safe-themes
-   (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(require 'lang-web)

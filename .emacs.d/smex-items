@@ -1,31 +1,31 @@
 
 ;; ----- smex-history -----
 (
- ispell-change-dictionary
- flyspell-mode
- ispell
- calc
  eshell
- linum-mode
- run-prolog
+ org-agenda
+ todo-show
+ calendar
+ org-calendar-goto-agenda
+ sbt-command
+ ensime
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 15)
+ (list-packages . 19)
  (list-abbrevs . 1)
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
- (linum-mode . 163)
- (eshell . 141)
- (yas-new-snippet . 3)
+ (linum-mode . 178)
+ (eshell . 206)
+ (yas-new-snippet . 4)
  (yas-expand . 9)
- (yas-insert-snippet . 7)
+ (yas-insert-snippet . 8)
  (yas-exit-snippet . 2)
  (info . 1)
  (js-mode . 1)
- (calc . 20)
+ (calc . 30)
  (prolog-mode . 38)
  (erlang-mode . 5)
  (erlang-indent-command . 3)
@@ -49,7 +49,7 @@
  (cider-eval-file . 46)
  (ac-cider-popup-doc . 1)
  (magit-pull . 1)
- (calc-reset . 1)
+ (calc-reset . 2)
  (org-mode . 35)
  (erlang-shell . 54)
  (comint-previous-input . 7)
@@ -78,14 +78,29 @@
  (tempo-template-erlang-after . 1)
  (tempo-template-erlang-large-header . 2)
  (yas/expand . 1)
- (erc . 11)
+ (erc . 14)
  (pong . 1)
  (tramp-cleanup-this-connection . 1)
- (run-prolog . 42)
+ (run-prolog . 87)
  (sgml-mode . 1)
  (nxml-mode . 5)
  (customize-variable . 4)
- (ispell . 2)
+ (ispell . 23)
  (flyspell-mode . 1)
- (ispell-change-dictionary . 1)
+ (ispell-change-dictionary . 2)
+ (calc-settings-file-name . 3)
+ (ensime . 13)
+ (sbt-mode . 2)
+ (scala-mode . 1)
+ (sbt-command . 7)
+ (sbt-clear . 1)
+ (ensime-inspector-browse-source . 2)
+ (imenu . 2)
+ (ensime-import-type-at-point . 2)
+ (ensime-refactor-diff-organize-imports . 3)
+ (ensime-refactor-diff-rename . 2)
+ (org-calendar-goto-agenda . 4)
+ (calendar . 2)
+ (todo-show . 2)
+ (org-agenda . 4)
 )

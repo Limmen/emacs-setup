@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ list-packages
  org-todo-list
  org-agenda-schedule
  LaTeX-mode
  eshell
  org-agenda
  todo-show
- calendar
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 19)
+ (list-packages . 20)
  (list-abbrevs . 1)
  (custom-theme-visit-theme . 1)
  (customize-face . 1)

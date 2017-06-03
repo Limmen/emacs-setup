@@ -18,7 +18,6 @@
 (require 'base-extensions)
 (require 'base-functions)
 (require 'base-global-keys)
-
 (require 'lang-web)
 
 ;;Keybinds
@@ -56,19 +55,16 @@
 
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+;;scala
 (use-package ensime
   :ensure t
   :pin melpa-stable)
-
 
 (use-package sbt-mode
   :pin melpa)
 
 (use-package scala-mode
   :pin melpa)
-
-;;org-latex
-(require 'ox-latex)
 
 ;;ditaa path
 (setq org-ditaa-jar-path "/usr/bin/ditaa")
@@ -80,7 +76,7 @@
   (nyan-mode 1))
 
 ;;org-latex
-(use-package dox-latex
+(use-package ox-latex
   :config
   (unless (boundp 'org-latex-classes)
     (setq org-latex-classes nil))
@@ -98,14 +94,12 @@
   )
 
 ;; erlang
-;;erlang mode
-(use-package erlang-start
-  :config
-  (setq load-path (cons  "/usr/local/otp/lib/tools-<ToolsVer>/emacs"
-   load-path))
-   (setq erlang-root-dir "/usr/local/otp")
-   (setq exec-path (cons "/usr/local/otp/bin" exec-path)))
+(setq load-path (cons  "/usr/local/otp/lib/tools-<ToolsVer>/emacs"
+			 load-path))
+(setq erlang-root-dir "/usr/local/otp")
+(setq exec-path (cons "/usr/local/otp/bin" exec-path))
 
+(use-package erlang-start)
 (use-package erlang-mode
   :config
   ;; Binding keys when erlang-mode is active

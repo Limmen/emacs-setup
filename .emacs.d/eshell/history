@@ -34,3 +34,32 @@ clear
 
 ls
 ls -al
+sbt
+sbt
+sbt
+clear
+
+ls
+cd ..
+ls
+sbt
+ls
+sbt
+clear
+
+cd ..
+cd ..
+cd ..
+git add --all
+git commit -m "add easy 2,3/scala"
+clear
+
+ls
+git status
+git add --all
+git commit -m ""
+git commit -m " "
+git commit -m "reload"
+git branch
+git remote
+git push github master

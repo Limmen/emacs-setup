@@ -160,3 +160,10 @@
 
 (add-to-list 'org-modules "org-habit")
 (setq org-deadline-warning-days 14)
+
+;;;latex config
+(use-package tex
+  :defer t
+  :ensure auctex
+  :config
+  (setq TeX-auto-save t))

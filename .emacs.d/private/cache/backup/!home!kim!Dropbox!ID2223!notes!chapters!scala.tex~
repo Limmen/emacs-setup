@@ -1,0 +1,504 @@
+\chapter{Scala}
+\section{Basics}
+
+\paragraph{Syntax}
+
+\begin{verbatim}
+var x = 5	//variable or constant
+var x: Double = 5	//explicit type
+
+def f(x: Int) = { x*x }  //function
+
+def f(x: Any) = println(x) //Notice that you must! declare type for all args
+
+type R = Double	//type alias
+
+(x:R) => x*x   //anonymous function
+
+(1 to 5).map( x => x*x ) //anonymous function
+
+(1 to 5).map(_*2) vs.
+(1 to 5).reduceLeft( _+_ )	anonymous function: underscore is positionally matched arg.
+
+//datastructures
+
+(1,2,3)	//tuple literal. (Tuple3)
+var (x,y,z) = (1,2,3) //destructuring bind: tuple unpacking via pattern matching.
+
+var xs = List(1,2,3) //list (immutable).
+
+1 to 5 same as 1 until 6 //range sugar
+1 to 10 by 2
+
+if/while/do/break basically like java
+
+for comprehensions/loops:
+
+for (x <- xs if x%2 == 0) yield x*10 same as
+xs.filter(_%2 == 0).map(_*10)
+
+
+for (x <- xs; y <- ys) yield x*y same as
+xs flatMap {x => ys map {y => x*y}}
+
+val readonly = 5 //declare a private member in class
+\end{verbatim}
+
+\paragraph{Infix syntax for methods taking 1 argument}:
+
+Example instead of df.format(now) we can type:
+\begin{verbatim}
+df format now
+\end{verbatim}
+
+\paragraph{Java packages are imported like normal (kinda)}
+
+use underscore instead of star for import-all.
+
+\paragraph{Everything is an object}
+
+In Scala there is no distinguishing between primitive types and objects, everything is a primitive type. I.e numbers are objects with methods
+\begin{verbatim}
+1 + 2 * 3 / x
+
+//is equivalent to:
+
+(1).+(((2).*(3))./(x))
+\end{verbatim}
+
+Also functions are objects and can thus be passed as arguments.
+
+Anonymous function syntax:
+\begin{verbatim}
+() => ...
+\end{verbatim}
+
+Scala is an OO-language and has classes just like Java, classes in Scala can also have arguments:
+\begin{verbatim}
+class Complex(real: Double, imaginary: Double) {
+  def re() = real
+  def im() = imaginary
+}
+\end{verbatim}
+
+Notice that in scala it is not necessary to always explicitly state return type, in the example above \texttt{re()} and \texttt{im()} are functions not declaring any return type, this is then explicitly infered by Scala compiler as a double-return type. Of course it is not always possible to do this kind of inference. Only omit type declarations if they are particularly obvious from the context.
+
+The two methods \texttt{re()} and \texttt{im()} in the example above are methods which take 0 arguments but you still need to use the parenthesis afterwards. In scala it is possible to explicitly declare that a function takes zero arguments which will allow you to skip the parenthesis:
+
+\begin{verbatim}
+class Complex(real: Double, imaginary: Double) {
+  def re = real
+  def im = imaginary
+}
+\end{verbatim}
+
+\paragraph{Inheritance}
+
+All classes in Scala inherit from a super-class. When no super-class is specified, as in the Complex example of previous section, scala.AnyRef is implicitly used.
+
+To override a method it is necessary to explictly state that it is overriding a method:
+\begin{verbatim}
+class Complex(real: Double, imaginary: Double) {
+  def re = real
+  def im = imaginary
+  override def toString() =
+    "" + re + (if (im < 0) "" else "+") + im + "i"
+}
+\end{verbatim}
+
+\paragraph{Case classes}
+
+\begin{verbatim}
+abstract class Tree
+case class Sum(l: Tree, r: Tree) extends Tree
+case class Var(n: String) extends Tree
+case class Const(v: Int) extends Tree
+\end{verbatim}
+Case-klasser är inte samma som vanliga klasser. Case-klasser exporterar automatiskt getters/setters för sina konstruktor parametrar och kan skapas utan new keyword om man så vill. Dessutom ges default metoder för equals och hashCode.
+
+\paragraph{Pattern Matching}
+
+Pattern matching i Scala fungerar lite som en mer kraftfull case klausul:
+\begin{verbatim}
+import scala.util.Random
+val x: Int = Random.nextInt(10)
+x match {
+  case 0 => "zero"
+  case 1 => "one"
+  case 2 => "two"
+  case _ => "many"
+}
+\end{verbatim}
+The last case \_ is a “catch all” .
+
+case-klasser är speciellt användbara för pattern matching eftersom att man kan matcha på dess konstruktor:
+
+\begin{verbatim}
+abstract class Notification
+case class Email(sender: String, title: String, body: String) extends Notification
+case class SMS(caller: String, message: String) extends Notification
+case class VoiceRecording(contactName: String, link: String) extends Notification
+
+def showNotification(notification: Notification): String = {
+  notification match {
+    case Email(email, title, _) =>
+      s"You got an email from $email with title: $title"
+    case SMS(number, message) =>
+      s"You got an SMS from $number! Message: $message"
+    case VoiceRecording(name, link) =>
+      s"you received a Voice Recording from $name! Click the link to hear it: $link"
+  }
+}
+\end{verbatim}
+Man kan även ha pattern-guards likt funktions-guards i erlang, guards är helt enkelt boolean uttryck:
+\begin{verbatim}
+def showImportantNotification(notification: Notification, importantPeopleInfo: Seq[String]): String = {
+  notification match {
+    case Email(email, _, _) if importantPeopleInfo.contains(email) =>
+      "You got an email from special someone!"
+    case SMS(number, _) if importantPeopleInfo.contains(number) =>
+      "You got an SMS from special someone!"
+    case other =>
+      showNotification(other) // nothing special, delegate to our original showNotification function
+  }
+}
+\end{verbatim}
+
+\paragraph{Types}
+
+We refer to a Scala’s typesystem as being "unified" because there is a "Top Type", Any. This is different than Java, which has "special cases" in form of primitive types (int, long, float, double, byte, char, short, boolean), which do not extend Java’s "Almost-Top Type" - java.lang.Object.
+
+Scala takes on the idea of having one common Top Type for all Types by introducing Any. Any is a supertype of both AnyRef and AnyVal.
+
+AnyRef is the "object world" of Java (and the JVM), it corresponds to java.lang.Object, and is the supertype of all objects. AnyVal on the other hand represents the "value world" of Java, such as int and other JVM primitives.
+
+Thanks to this hierarchy, we’re able to define methods taking Any - thus being compatible with both scala.Int instances as well as java.lang.String:
+\begin{verbatim}
+class Person
+
+val allThings = ArrayBuffer[Any]()
+
+val myInt = 42             // Int, kept as low-level `int` during runtime
+
+allThings += myInt         // Int (extends AnyVal)
+                           // has to be boxed (!) -> becomes java.lang.Integer in the collection (!)
+
+allThings += new Person()  // Person (extends AnyRef), no magic here
+\end{verbatim}
+
+Basic types in Scala (built in) is Byte, SHort, Int, Long, Float, Char, String, Null, Boolean etc.. just like in java and then it also has Any, AnyRef, and Nothing as types.
+
+Defining your own types, example a functor type:
+
+\begin{verbatim}
+type FunctorType = (LocalDate, HolidayCalendar, Int, Boolean) => LocalDate
+
+//The type alias FunctorType is just a shorthand for
+//(LocalDate, HolidayCalendar, Int, Boolean) => LocalDate
+//Type aliases are often used to keep the rest of the code simple: you can now write
+
+def doSomeThing(f: FunctorType)
+
+//which will be interpreted by the compiler as
+
+def doSomeThing(f: (LocalDate, HolidayCalendar, Int, Boolean) => LocalDate)
+\end{verbatim}
+
+Example of using the type keyword to make class definitons more readable, e.g:
+\begin{verbatim}
+type RestfulParams = Map[String, String]
+def canonicalize(params: RestfulParams): String = { ... }
+\end{verbatim}
+
+Type parameters in scala are enclosed inside square brackets:
+\begin{verbatim}
+Array[Int].
+\end{verbatim}
+x: \_* is like a type declaration that tells the compiler to treat x as repeated parameter (aka variable-length argument list — vararg).
+
+Semicolon in Scala is optional.
+
+\_ används överallt i scala och fungerar som i Erlang (match-all) t.om. i funktionsanrop kan man skriva fun(\_+\_) vilket då matchar två args och summerar och skickar resultatet some 1 arg till funktionen.
+
+\paragraph{Arrays}
+
+För att använda en Array så måste man deklarera en variabel som håller arrayen och sedan även specifiera datatypen i arrayen, typ så här:
+\begin{verbatim}
+var z:Array[String] = new Array[String](3)
+
+or
+
+var z = new Array[String](3)
+
+z(0) = "Zara"; z(1) = "Nuha"; z(4/2) = "Ayan"
+\end{verbatim}
+
+Shortway of defining an array:
+\begin{verbatim}
+var z = Array("Zara", "Nuha", "Ayan")
+\end{verbatim}
+
+\paragraph{Scala access modifiers}
+
+Member variabler/funktioner av klasser kan ges access-modifierare precis som i java. Access-modifiers är private och protected, annars blir det default som är public.
+\begin{verbatim}
+class Outer {
+   class Inner {
+      private def f() { println("f") }
+
+      class InnerMost {
+         f() // OK
+      }
+   }
+   (new Inner).f() // Error: f is not accessible
+}
+\end{verbatim}
+
+\paragraph{def vs val vs var}
+\begin{itemize}
+\item def - defines an immutable label for the right side content which is lazily evaluated - evaluate by name.
+\item val - defines an immutable label for the right side content which is eagerly/immediately evaluated - evaluated by value.
+\item var - defines a mutable variable, initially set to the evaluated right side content.
+\end{itemize}
+\begin{verbatim}
+scala> def something = 2 + 3 * 4
+something: Int
+scala> something  // now it's evaluated, lazily upon usage
+res30: Int = 14
+
+scala> val somethingelse = 2 + 3 * 5 // it's evaluated, eagerly upon definition
+somethingelse: Int = 17
+
+scala> var aVariable = 2 * 3
+aVariable: Int = 6
+
+scala> aVariable = 5
+aVariable: Int = 5
+
+scala> something = 5 * 6
+<console>:8: error: value something_= is not a member of object $iw
+       something = 5 * 6
+       ^
+\end{verbatim}
+
+\paragraph{Basic SBT}
+
+Add ensime plugin to ~/.sbt/0.13/plugins/plugins.sbt
+\begin{verbatim}
+addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.12")
+\end{verbatim}
+
+Sbt basic usage:
+
+You can have an sbt project with just a single file, simply run ``sbt'' in the directory and when the sbt shell is opened you can run ``run''. Other commands:
+\begin{verbatim}
+- clean Deletes all generated files (the target directory).
+- publishLocal Publishes artifacts (such as jars) to the local Ivy repository as described in Publishing.
+- publish Publishes artifacts (such as jars) to the repository defined by the publishTo setting, described in Publishing.
+- update Resolves and retrieves external dependencies as described in library dependencies.
+- compile- console
+etc..
+\end{verbatim}
+
+Create new scala project with template:
+
+\begin{verbatim}
+$ sbt new scala/scala-seed.g8
+....
+name [hello]:
+
+Template applied in ./hello
+
+$ sbt new scala/hello-world.g8
+\end{verbatim}
+
+Ensime commands inside sbt:
+
+\begin{verbatim}
+ensimeConfig - Generate a .ensime for the project (takes space-separated parameters to restrict to subprojects).
+ensimeConfigProject — Generate a project/.ensime for the project definition.
+
+ensimeRunMain
+c/ensimeLaunch MyApp	A launch manager that lets you define canned ensimeRunMain applications (analogous to IntelliJ’s “Run Configurations
+ensimeRunDebug	Like ensimeRunMain but adds debugging flags automatically.
+\end{verbatim}
+To avoid scaffolding crap that ensime brings create ~/.sbt/0.13/global.sbt:
+\begin{verbatim}
+import org.ensime.EnsimeKeys._
+
+ensimeIgnoreMissingDirectories := true
+\end{verbatim}
+
+After generating .ensime file with ensimeConfig, run in emacs:
+\begin{verbatim}
+M-x ensime
+\end{verbatim}
+Ensime commands:
+\begin{verbatim}
+C-c C-v z to launch the embedded Scala REPL.
+
+C-c C-c a load all scala files in your project (simplest but least efficient mode)
+
+C-c C-v f format file
+
+C-c C-r o organize imports
+
+C-c C-v d //browse javadoc, this actually works!
+
+C-c C-v v //very impressive search of source and jump to source utility
+
+C-c C-t t //jump to test
+\end{verbatim}
+
+Cheat sheet: http://ensime.org/editors/emacs/cheat_sheet/
+
+Error highliting occurs when you save file or type C-c C-c c
+
+Run with sbt:
+\begin{verbatim}
+M-x sbt-command run
+\end{verbatim}
+extends App:
+
+\begin{verbatim}
+object Application extends App {
+   println("Hello World")
+}
+and
+
+object Application {
+    def main(args: Array[String]): Unit = {
+        println("Hello World");
+    }
+}
+\end{verbatim}
+The App trait is a convenient way of creating an executable scala program. The difference to the main method altenative is (apart from the obvious syntactic differences) that the App trait uses the delayed initalization feature.
+
+REPL commands:
+\begin{verbatim}
+C-c C-v z	Start the Scala REPL or switch to it
+C-c C-v C-r	Send the region to the REPL
+C-c C-v b	Evaluate the current buffer in the REPL
+C-c C-v l	Prompt for a file and load it in the REPL
+
+C-c C-v t or hover mouse	Show the type of the symbol under the cursor
+C-c C-v e or hover mouse	Show compile warnings under the cursor ; show implicit conversions when applicable
+\end{verbatim}
+Refactoring:
+\begin{verbatim}
+C-c C-r a	Add type to the symbol under the cursor
+C-c C-r o	Organize imports in the current file
+C-c C-r t	Import the type under the cursor
+C-c C-r r	Rename the symbol under the cursor
+C-c C-r l	Extract the region into a local value
+C-c C-r m	Extract the region into a method
+C-c C-r i	Inline the local value under the cursor
+\end{verbatim}
+
+Summary of most important commands:
+\begin{verbatim}
+//Sbt
+
+//Refactoring commands (starts with C-C C-r (r as in (R)efactoring))
+
+C-c C-r a	Add type to the symbol under the cursor
+C-c C-r o	Organize imports in the current file
+C-c C-r t	Import the type under the cursor
+C-c C-r r	Rename the symbol under the cursor
+
+//Repl commands/util commands, starts with (C-c C-v (v as in (V)iew)
+C-c C-v z	Start the Scala REPL or switch to it
+C-c C-v C-r	Send the region to the REPL
+C-c C-v b	Evaluate the current buffer in the REPL
+C-c C-v l	Prompt for a file and load it in the REPL
+
+C-c C-v t or hover mouse	Show the type of the symbol under the cursor
+C-c C-v e or hover mouse	Show compile warnings under the cursor ; show implicit conversions when applicable
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\Begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+\end{verbatim}

@@ -139,14 +139,6 @@
 
 (use-package smex)
 
-(use-package undo-tree
-  :config
-  ;; Remember undo history
-  (setq
-   undo-tree-auto-save-history nil
-   undo-tree-history-directory-alist `(("." . ,(concat temp-dir "/undo/"))))
-  (global-undo-tree-mode 1))
-
 (use-package which-key
   :config
   (which-key-mode))

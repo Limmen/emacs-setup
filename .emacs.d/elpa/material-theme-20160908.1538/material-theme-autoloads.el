@@ -4,23 +4,23 @@
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
 ;;;### (autoloads nil "material-light-theme" "material-light-theme.el"
-;;;;;;  (22834 39449 975226 168000))
+;;;;;;  (22837 45952 564971 175000))
 ;;; Generated autoloads from material-light-theme.el
 
 (when (and (boundp 'custom-theme-load-path) load-file-name) (add-to-list 'custom-theme-load-path (file-name-as-directory (file-name-directory load-file-name))))
 
 ;;;***
 
-;;;### (autoloads nil "material-theme" "material-theme.el" (22834
-;;;;;;  39449 971226 168000))
+;;;### (autoloads nil "material-theme" "material-theme.el" (22837
+;;;;;;  45952 564971 175000))
 ;;; Generated autoloads from material-theme.el
 
 (when (and (boundp 'custom-theme-load-path) load-file-name) (add-to-list 'custom-theme-load-path (file-name-as-directory (file-name-directory load-file-name))))
 
 ;;;***
 
-;;;### (autoloads nil nil ("material-theme-pkg.el") (22834 39449
-;;;;;;  979226 168000))
+;;;### (autoloads nil nil ("material-theme-pkg.el") (22837 45952
+;;;;;;  568971 175000))
 
 ;;;***
 

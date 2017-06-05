@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- neotree-dir
+ text-scale-decrease
+ text-scale-increase
+ neotree-toggle
  neotree-show
- org-agenda
+ shell
  ensime
- eshell
- list-buffers
- list-packages
+ org-agenda
 )
 
 ;; ----- smex-data -----
@@ -89,7 +89,7 @@
  (flyspell-mode . 1)
  (ispell-change-dictionary . 2)
  (calc-settings-file-name . 3)
- (ensime . 20)
+ (ensime . 21)
  (sbt-mode . 2)
  (scala-mode . 1)
  (sbt-command . 7)
@@ -111,6 +111,9 @@
  (ensime-db-clear-all-breaks . 2)
  (ensime-reload . 1)
  (list-buffers . 5)
- (neotree-show . 3)
- (neotree-dir . 4)
+ (shell . 1)
+ (neotree-show . 1)
+ (neotree-toggle . 1)
+ (text-scale-increase . 1)
+ (text-scale-decrease . 1)
 )

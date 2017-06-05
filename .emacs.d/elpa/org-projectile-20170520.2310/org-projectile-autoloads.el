@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "org-projectile" "org-projectile.el" (22834
-;;;;;;  36400 775197 337000))
+;;;### (autoloads nil "org-projectile" "org-projectile.el" (22837
+;;;;;;  45967 756971 319000))
 ;;; Generated autoloads from org-projectile.el
 
 (autoload 'org-projectile:toggle-subheading "org-projectile" "\
@@ -40,7 +40,7 @@ If CAPTURE-TEMPLATE is provided use it as the capture template for the TODO.
 ;;;***
 
 ;;;### (autoloads nil nil ("org-category-capture.el" "org-projectile-pkg.el")
-;;;;;;  (22834 36400 779197 337000))
+;;;;;;  (22837 45967 760971 319000))
 
 ;;;***
 

@@ -143,11 +143,8 @@
                                 ("\\.m$" . mercury-mode))
                               auto-mode-alist))
 
-;; org agenda + journal
-(use-package org-journal
-  :config
-  (setq org-journal-dir "~/Dropbox/org/journal"))
-
+;;diary
+(setq diary-file "~/Dropbox/org/diary_file")
 (setq org-agenda-files (list "~/Dropbox/org/agenda/work.org"
                              "~/Dropbox/org/agenda/school.org"
                              "~/Dropbox/org/agenda/home.org"))

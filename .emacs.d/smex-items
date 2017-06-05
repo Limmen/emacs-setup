@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ calendar
+ calendar-end-of-year
+ org-agenda-list
+ calendar-redraw
+ icalendar-import-file
  text-scale-decrease
  text-scale-increase
- neotree-toggle
- neotree-show
- shell
- ensime
- org-agenda
 )
 
 ;; ----- smex-data -----
@@ -100,7 +100,7 @@
  (ensime-refactor-diff-organize-imports . 3)
  (ensime-refactor-diff-rename . 2)
  (org-calendar-goto-agenda . 4)
- (calendar . 2)
+ (calendar . 6)
  (todo-show . 2)
  (org-agenda . 5)
  (org-agenda-schedule . 2)
@@ -116,4 +116,8 @@
  (neotree-toggle . 1)
  (text-scale-increase . 1)
  (text-scale-decrease . 1)
+ (icalendar-import-file . 5)
+ (calendar-redraw . 1)
+ (org-agenda-list . 1)
+ (calendar-end-of-year . 1)
 )

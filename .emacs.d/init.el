@@ -145,9 +145,12 @@
 
 ;;diary
 (setq diary-file "~/Dropbox/org/diary_file")
+(add-hook 'diary-list-entries-hook 'diary-sort-entries t)
+
 (setq org-agenda-files (list "~/Dropbox/org/agenda/work.org"
                              "~/Dropbox/org/agenda/school.org"
                              "~/Dropbox/org/agenda/home.org"))
+
 
 (setq bookmark-default-file "~/Dropbox/org/bookmarks")
 
@@ -166,3 +169,15 @@
   :ensure auctex
   :config
   (setq TeX-auto-save t))
+
+(fringe-mode 10)
+; lines which are exactly as wide as the window (not counting the
+; final newline character) are not continued. Instead, when point is
+; at the end of the line, the cursor appears in the right fringe.
+(setq overflow-newline-into-fringe t)
+
+; each line of text gets one line on the screen (i.e., text will run
+; off the left instead of wrapping around onto a new line)
+(setq truncate-lines t)
+; truncate lines even in partial-width windows
+(setq truncate-partial-width-windows t)

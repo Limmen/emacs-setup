@@ -46,9 +46,9 @@
 (global-set-key  (kbd "C-M-#") 'wdired-change-to-wdired-mode)
 (global-set-key  (kbd "C-§") 'yas-expand)
 (global-set-key (kbd "C-1") (lambda()
-			       (interactive)
-			       (show-all)
-			       (artist-mode)))
+			      (interactive)
+			      (show-all)
+			      (artist-mode)))
 (global-set-key (kbd "C-x F") 'mc/edit-lines)
 (global-set-key (kbd "<up>") 'comint-previous-input) ; previous history
 (global-set-key (kbd "<down>") 'comint-next-input) ; reverse history
@@ -77,48 +77,26 @@
   :config
   (nyan-mode 1))
 
-;;org-latex
-(use-package ox-latex
-  :config
-  (unless (boundp 'org-latex-classes)
-    (setq org-latex-classes nil))
-  (add-to-list 'org-latex-classes
-	       '("article"
-		 "\\documentclass{article}"
-		 ("\\section{%s}" . "\\section*{%s}")
-		 ("\\subsection{%s}" . "\\subsection*{%s}")
-		 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-		 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-		 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-  (add-hook 'LaTeX-mode-hook 'flyspell-mode) ;start flyspell-mode
-  (setq ispell-dictionary "british")    ;set the default dictionary
-  (add-hook 'LaTeX-mode-hook 'ispell)   ;start ispell
-  )
-
 ;; erlang
 (setq load-path (cons  "/usr/local/otp/lib/tools-<ToolsVer>/emacs"
-			 load-path))
+		       load-path))
 (setq erlang-root-dir "/usr/local/otp")
 (setq exec-path (cons "/usr/local/otp/bin" exec-path))
+(require 'erlang-start)
+(require 'erlang-flymake)
 
-(use-package erlang-start)
-(use-package erlang-mode
-  :config
-  ;; Binding keys when erlang-mode is active
-  (defun erlang-shell-config ()
+(defun erlang-shell-config ()
   "For use in `erlang-shell-hook'."
   (local-set-key (kbd "<up>") 'comint-previous-input) ; previous history
   (local-set-key (kbd "<down>") 'comint-next-input) ; reverse history
   ;; more here
   )
-  (add-hook 'erlang-shell-hook 'erlang-shell-config)
-  (put 'erase-buffer 'disabled nil)
-  ;; example of setting env var named “ERL_LIVS”, by appending a new path to existing path
-  (setenv "ERL_LIBS"
+(add-hook 'erlang-shell-hook 'erlang-shell-config)
+(put 'erase-buffer 'disabled nil)
+;; example of setting env var named “ERL_LIVS”, by appending a new path to existing path
+(setenv "ERL_LIBS"
         "/home/kim/Library/Erlang/lib"
-        ))
-
-(use-package erlang-flymake)
+        )
 
 ;; clear eshell
 (defun eshell/clear ()
@@ -134,7 +112,7 @@
 
 
 ;; prolog settings
-(load-file "~/.emacs.d/prolog.el")
+(require 'prolog)
 (autoload 'run-prolog "prolog" "Start a Prolog sub-process." t)
 (autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
 (autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
@@ -144,14 +122,27 @@
                               auto-mode-alist))
 
 ;;diary
-(setq diary-file "~/Dropbox/org/diary_file")
+;;(setq diary-file "~/Dropbox/org/diary_file")
+(setq
+ diary-display-function 'diary-fancy-display
+ diary-file "~/Dropbox/org/diary_file"
+ diary-comment-start "/*"
+ diary-comment-end "*/"
+ calendar-mark-diary-entries-flag t
+ calendar-mark-holidays-flag t)
+
+(add-hook 'calendar-today-visible-hook 'calendar-mark-today)
+(add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
+(add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)
 (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
 
+;;agenda
 (setq org-agenda-files (list "~/Dropbox/org/agenda/work.org"
                              "~/Dropbox/org/agenda/school.org"
                              "~/Dropbox/org/agenda/home.org"))
 
 
+;;bookmarks
 (setq bookmark-default-file "~/Dropbox/org/bookmarks")
 
 ;; dashboard
@@ -160,7 +151,6 @@
                         (projects . 5)
                         (agenda . 5)))
 
-(add-to-list 'org-modules "org-habit")
 (setq org-deadline-warning-days 14)
 
 ;;;latex config
@@ -168,16 +158,41 @@
   :defer t
   :ensure auctex
   :config
-  (setq TeX-auto-save t))
+  (setq TeX-auto-save t)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (setq ispell-dictionary "british")
+  (add-hook 'LaTeX-mode-hook 'ispell))
 
 (fringe-mode 10)
-; lines which are exactly as wide as the window (not counting the
-; final newline character) are not continued. Instead, when point is
-; at the end of the line, the cursor appears in the right fringe.
+					; lines which are exactly as wide as the window (not counting the
+					; final newline character) are not continued. Instead, when point is
+					; at the end of the line, the cursor appears in the right fringe.
 (setq overflow-newline-into-fringe t)
 
-; each line of text gets one line on the screen (i.e., text will run
-; off the left instead of wrapping around onto a new line)
-(setq truncate-lines t)
-; truncate lines even in partial-width windows
-(setq truncate-partial-width-windows t)
+;;emacs-lisp editing
+(use-package paredit
+  :ensure t
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+  ;; enable in the *scratch* buffer
+  (add-hook 'lisp-interaction-mode-hook #'paredit-mode)
+  (add-hook 'ielm-mode-hook #'paredit-mode)
+  (add-hook 'lisp-mode-hook #'paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode))
+
+(use-package paren
+  :config
+  (show-paren-mode +1))
+
+;; fetch KTH schedule
+(require 'fetch-schedule)
+(setq diary-remote-calendar "https://www.kth.se/social/user/192266/icalendar/1e3697b6ecf223657d5941f56a0ad2090c2bff07")
+(setq diary-remote-calendar-local-replica "~/Dropbox/org/kth_diary")
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))

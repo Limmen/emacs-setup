@@ -2,24 +2,24 @@
 ;; ----- smex-history -----
 (
  calendar
- calendar-end-of-year
- org-agenda-list
- calendar-redraw
- icalendar-import-file
- text-scale-decrease
- text-scale-increase
+ list-packages
+ fetch-schedule
+ ielm
+ describe-variable
+ yas-new-snippet
+ eval-last-sexp
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 21)
+ (list-packages . 22)
  (list-abbrevs . 1)
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
  (linum-mode . 178)
  (eshell . 210)
- (yas-new-snippet . 4)
+ (yas-new-snippet . 6)
  (yas-expand . 9)
  (yas-insert-snippet . 8)
  (yas-exit-snippet . 2)
@@ -43,8 +43,8 @@
  (eval-buffer . 161)
  (eval-region . 2)
  (test-fun . 1)
- (eval-last-sexp . 3)
- (eval-expression . 8)
+ (eval-last-sexp . 5)
+ (eval-expression . 9)
  (cider-jack-in . 8)
  (cider-eval-file . 46)
  (ac-cider-popup-doc . 1)
@@ -100,7 +100,7 @@
  (ensime-refactor-diff-organize-imports . 3)
  (ensime-refactor-diff-rename . 2)
  (org-calendar-goto-agenda . 4)
- (calendar . 6)
+ (calendar . 9)
  (todo-show . 2)
  (org-agenda . 5)
  (org-agenda-schedule . 2)
@@ -120,4 +120,11 @@
  (calendar-redraw . 1)
  (org-agenda-list . 1)
  (calendar-end-of-year . 1)
+ (diary-view-entries . 1)
+ (diary-show-all-entries . 1)
+ (enable-paredit-mode . 1)
+ (foo . 13)
+ (ielm . 4)
+ (fetch-schedule . 27)
+ (describe-variable . 12)
 )

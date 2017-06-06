@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: markdown
+# key: markdown
+# --
+# Project
+
+## Overview
+
+## Author & Maintainer
+
+Kim Hammar <kimham@kth.se>
+
+## Copyright and license
+
+[LICENSE](LICENSE.md)
+
+MIT
+
+(C) 2017, Kim Hammar

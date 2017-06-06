@@ -1,9 +1,9 @@
 
 ;; ----- smex-history -----
 (
+ fetch-schedule
  calendar
  list-packages
- fetch-schedule
  ielm
  describe-variable
  yas-new-snippet
@@ -125,6 +125,6 @@
  (enable-paredit-mode . 1)
  (foo . 13)
  (ielm . 4)
- (fetch-schedule . 27)
+ (fetch-schedule . 29)
  (describe-variable . 12)
 )

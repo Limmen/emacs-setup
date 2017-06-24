@@ -78,10 +78,10 @@
   (nyan-mode 1))
 
 ;; erlang
-(setq load-path (cons  "/usr/local/otp/lib/tools-<ToolsVer>/emacs"
+(setq load-path (cons  "/usr/lib/erlang/lib/tools-2.10/emacs"
 		       load-path))
-(setq erlang-root-dir "/usr/local/otp")
-(setq exec-path (cons "/usr/local/otp/bin" exec-path))
+(setq erlang-root-dir "/usr/lib/erlang")
+(setq exec-path (cons "/usr/lib/erlang/lib" exec-path))
 (require 'erlang-start)
 (require 'erlang-flymake)
 

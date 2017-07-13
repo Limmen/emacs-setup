@@ -196,3 +196,7 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+
+(use-package elpy
+  :ensure t
+  :init (elpy-enable))

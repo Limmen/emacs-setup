@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode which-key wgrep web-mode use-package smex smartparens request paredit org-projectile org-bullets nyan-mode neotree multiple-cursors material-theme magit impatient-mode hlinum flycheck expand-region exec-path-from-shell ensime dashboard counsel-projectile avy auctex))))
+    (elpy which-key wgrep web-mode-edit-element use-package smex smartparens request paredit org-projectile org-bullets nyan-mode neotree multiple-cursors material-theme markdown-mode magit impatient-mode hlinum flycheck expand-region exec-path-from-shell ensime emmet-mode dashboard counsel-projectile company-web avy auctex ac-html-bootstrap ac-html-angular))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

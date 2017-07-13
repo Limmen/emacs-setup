@@ -66,3 +66,9 @@ sbt
 sbt
 cd scala/
 sbt
+make all
+make run
+git add --all
+git commit -m "add report for namy"
+git push origin master
+git push origin master

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- fetch-schedule
- calendar
- list-packages
- ielm
- describe-variable
+ ensime
+ shell
+ visual-line-mode
  yas-new-snippet
- eval-last-sexp
+ linum-mode
+ yas-expand
+ ispell
 )
 
 ;; ----- smex-data -----
@@ -17,20 +17,20 @@
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
- (linum-mode . 178)
- (eshell . 210)
- (yas-new-snippet . 6)
- (yas-expand . 9)
+ (linum-mode . 183)
+ (eshell . 212)
+ (yas-new-snippet . 7)
+ (yas-expand . 10)
  (yas-insert-snippet . 8)
  (yas-exit-snippet . 2)
  (info . 1)
  (js-mode . 1)
- (calc . 30)
+ (calc . 31)
  (prolog-mode . 38)
  (erlang-mode . 5)
  (erlang-indent-command . 3)
  (erlang-indent-current-buffer . 1)
- (visual-line-mode . 2)
+ (visual-line-mode . 5)
  (org-ref . 14)
  (org-ref-insert-cite-link . 2)
  (bibtex-url . 1)
@@ -85,11 +85,11 @@
  (sgml-mode . 1)
  (nxml-mode . 5)
  (customize-variable . 4)
- (ispell . 23)
+ (ispell . 44)
  (flyspell-mode . 1)
  (ispell-change-dictionary . 2)
  (calc-settings-file-name . 3)
- (ensime . 21)
+ (ensime . 26)
  (sbt-mode . 2)
  (scala-mode . 1)
  (sbt-command . 7)
@@ -111,7 +111,7 @@
  (ensime-db-clear-all-breaks . 2)
  (ensime-reload . 1)
  (list-buffers . 5)
- (shell . 1)
+ (shell . 15)
  (neotree-show . 1)
  (neotree-toggle . 1)
  (text-scale-increase . 1)

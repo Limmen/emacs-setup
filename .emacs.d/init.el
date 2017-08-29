@@ -200,3 +200,31 @@
 (use-package elpy
   :ensure t
   :init (elpy-enable))
+
+;; Elpy environment with local packages
+(let* (
+
+  (my-exec-path (list
+    "/home/limmen/programs/snorkel"
+    "/home/limmen/programs/snorkel/treedlib"
+    ))
+
+  (my-python-path (list
+    "/home/limmen/programs/snorkel"
+    "/home/limmen/programs/snorkel/treedlib"
+  ))
+  )
+
+  (setenv "PATH" (concat
+    (mapconcat 'identity my-exec-path path-separator)
+    (if (getenv "PATH") path-separator "")
+    (getenv "PATH")))
+
+  (setq exec-path (append my-exec-path exec-path))
+
+  (setenv "PYTHONPATH" (concat
+    (mapconcat 'identity my-python-path path-separator)
+    (if (getenv "PYTHONPATH") path-separator "")
+    (getenv "PYTHONPATH")))
+
+)

@@ -72,3 +72,13 @@ git add --all
 git commit -m "add report for namy"
 git push origin master
 git push origin master
+ls
+rm -rf java
+ls
+cd ..
+ls
+git log
+q
+git add --all
+git commit -m "finished implementation of reccomendation system in erlang"
+git push origin master

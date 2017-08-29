@@ -1,9 +1,9 @@
-(use-package material-theme
+(use-package sourcerer-theme
   :defer t
   :init
-  (load-theme 'material t))
+  (load-theme 'sourcerer t))
 
-(load-theme 'material t)
+(load-theme 'sourcerer t)
 
 
 

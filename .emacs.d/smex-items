@@ -1,36 +1,36 @@
 
 ;; ----- smex-history -----
 (
+ ivy-mode
  ispell
- eshell
- shell
- visual-line-mode
- ensime
- ensime-reload
- linum-mode
+ sql-postgres
+ list-packages
+ ein:notebooklist-open
+ ein:notebooklist-login
+ company-mode
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 22)
+ (list-packages . 27)
  (list-abbrevs . 1)
  (custom-theme-visit-theme . 1)
  (customize-face . 1)
  (customize-themes . 1)
- (linum-mode . 185)
- (eshell . 213)
+ (linum-mode . 186)
+ (eshell . 215)
  (yas-new-snippet . 7)
  (yas-expand . 10)
  (yas-insert-snippet . 8)
  (yas-exit-snippet . 2)
  (info . 1)
  (js-mode . 1)
- (calc . 33)
+ (calc . 37)
  (prolog-mode . 38)
  (erlang-mode . 5)
  (erlang-indent-command . 3)
  (erlang-indent-current-buffer . 1)
- (visual-line-mode . 8)
+ (visual-line-mode . 23)
  (org-ref . 14)
  (org-ref-insert-cite-link . 2)
  (bibtex-url . 1)
@@ -53,7 +53,7 @@
  (org-mode . 35)
  (erlang-shell . 54)
  (comint-previous-input . 7)
- (package-install . 1)
+ (package-install . 2)
  (edts-mode . 1)
  (edts-shell . 2)
  (inferior-erlang . 1)
@@ -85,11 +85,11 @@
  (sgml-mode . 1)
  (nxml-mode . 5)
  (customize-variable . 4)
- (ispell . 110)
+ (ispell . 220)
  (flyspell-mode . 1)
- (ispell-change-dictionary . 2)
+ (ispell-change-dictionary . 15)
  (calc-settings-file-name . 3)
- (ensime . 44)
+ (ensime . 66)
  (sbt-mode . 2)
  (scala-mode . 1)
  (sbt-command . 7)
@@ -105,13 +105,13 @@
  (org-agenda . 5)
  (org-agenda-schedule . 2)
  (org-todo-list . 1)
- (ensime-db-attach . 4)
+ (ensime-db-attach . 14)
  (ensime-db-step . 1)
  (ensime-db-next . 1)
  (ensime-db-clear-all-breaks . 2)
  (ensime-reload . 3)
  (list-buffers . 5)
- (shell . 42)
+ (shell . 57)
  (neotree-show . 1)
  (neotree-toggle . 1)
  (text-scale-increase . 1)
@@ -126,5 +126,19 @@
  (foo . 13)
  (ielm . 4)
  (fetch-schedule . 29)
- (describe-variable . 12)
+ (describe-variable . 13)
+ (goto-line . 7)
+ (ein:notebooklist-login . 14)
+ (ein:notebooklist-open . 14)
+ (ein:notebooklist-mode . 1)
+ (ein:edit-cell-mode . 2)
+ (ein:notebook-multilang-mode . 5)
+ (ein:notebook-python-mode . 9)
+ (python-mode . 6)
+ (python-indent-guess-indent-offset . 1)
+ (set-variable . 1)
+ (company-mode . 3)
+ (yas-minor-mode . 1)
+ (ivy-mode . 3)
+ (sql-postgres . 4)
 )

@@ -77,8 +77,28 @@
   :config
   (nyan-mode 1))
 
+;; Only spaces, no tabs
+(setq indent-tabs-mode nil)
+(electric-indent-mode 1)
+
+(add-hook 'ein:notebook-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)))
+
+(add-hook 'python-mode-hook
+  (lambda () (setq python-indent-offset 4)))
+
+(setq tab-width 4)
+
+(use-package ein
+  :pin melpa
+  :ensure t
+  :config
+  (setq indent-tabs-mode nil)
+  (setq ein:use-auto-complete t))
+
 ;; erlang
-(setq load-path (cons  "/usr/lib/erlang/lib/tools-2.10/emacs"
+(setq load-path (cons  "/usr/lib/erlang/lib/tools-2.11/emacs"
 		       load-path))
 (setq erlang-root-dir "/usr/lib/erlang")
 (setq exec-path (cons "/usr/lib/erlang/lib" exec-path))
@@ -196,35 +216,3 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
-
-(use-package elpy
-  :ensure t
-  :init (elpy-enable))
-
-;; Elpy environment with local packages
-(let* (
-
-  (my-exec-path (list
-    "/home/limmen/programs/snorkel"
-    "/home/limmen/programs/snorkel/treedlib"
-    ))
-
-  (my-python-path (list
-    "/home/limmen/programs/snorkel"
-    "/home/limmen/programs/snorkel/treedlib"
-  ))
-  )
-
-  (setenv "PATH" (concat
-    (mapconcat 'identity my-exec-path path-separator)
-    (if (getenv "PATH") path-separator "")
-    (getenv "PATH")))
-
-  (setq exec-path (append my-exec-path exec-path))
-
-  (setenv "PYTHONPATH" (concat
-    (mapconcat 'identity my-python-path path-separator)
-    (if (getenv "PYTHONPATH") path-separator "")
-    (getenv "PYTHONPATH")))
-
-)

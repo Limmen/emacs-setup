@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	indent-for-tab-command
 	org-beginning-of-line
 	paredit-kill
 	))

@@ -1,3 +1,4 @@
+e
 ;;; Commentary:
 ;;; This is my init file
 
@@ -43,7 +44,7 @@
 (global-set-key  (kbd "C-<return>") 'mark-page)
 (global-set-key  (kbd "C-M-¤") 'dired-do-query-replace-regexp)
 (global-set-key  (kbd "C-M-#") 'wdired-change-to-wdired-mode)
-(global-set-key  (kbd "C-`") 'yas-expand)
+(global-set-key  (kbd "C-@") 'yas-expand)
 (global-set-key (kbd "C-1") (lambda()
 			      (interactive)
 			      (show-all)

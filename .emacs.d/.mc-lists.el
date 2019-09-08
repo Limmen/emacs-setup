@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
 	indent-for-tab-command
+	kill-region
 	org-beginning-of-line
 	paredit-kill
 	))
@@ -11,4 +12,6 @@
 (setq mc/cmds-to-run-once
       '(
 	TeX-insert-backslash
+	ensime-mouse-motion
+	ignore
 	))

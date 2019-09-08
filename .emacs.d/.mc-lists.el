@@ -3,11 +3,18 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	kill-region
+	markdown-exdent-or-delete
 	org-beginning-of-line
+	org-self-insert-command
+	paredit-doublequote
 	paredit-kill
+	wdired-next-line
 	))
 
 (setq mc/cmds-to-run-once
       '(
 	TeX-insert-backslash
+	ivy-switch-buffer
+	mark-page
 	))

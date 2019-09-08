@@ -1,84 +1,128 @@
+ls
+cat Stockholm 
 clear
-
-clear
-
-ls
-find scala
-rm -rf scala
+
 ls
 ls
-rm -rf scala
+Welcome to the Emacs shell
 ls
-find scala
-clear
-
-ls
-ls
+pwd
+pwd /
 ls
 clear
-
-clear
-
+
 ls
+git status
+git status
+git add --all
+git status
+git reset
+git status
+cd ..
 ls
-clear
-
-sbt new scala/scala-seed.g8
-ls
-cd scala/
-ls
-sbt
-sbt
-lear
-clear
-
+cd ..
 ls
 ls -al
-sbt
-sbt
-sbt
-clear
-
-ls
-cd ..
-ls
-sbt
-ls
-sbt
-clear
-
-cd ..
-cd ..
-cd ..
+git status
+git cat .gitignore
+git status
 git add --all
-git commit -m "add easy 2,3/scala"
-clear
-
-sbt
-sbt
-sbt
-clear
-
-sdb
-sbt
-sbt
-sbt
-sbt
-cd scala/
-sbt
-make all
-make run
-git add --all
-git commit -m "add report for namy"
-git push origin master
-git push origin master
-ls
-rm -rf java
-ls
-cd ..
+git commit -m "some cleanup + add all 6 features for task5"
 ls
 git log
 q
 git add --all
-git commit -m "finished implementation of reccomendation system in erlang"
+git commit -m "add some tests for task6 	+ vectorHelper"
+git reset HEAD^
+git add --all
+git commit -m "add some tests for task6 	+ vectorHelper"
 git push origin master
+git pull origin master
+clear
+
+ls
+ls
+clear
+
+git add --all
+git commit -m "add template for lab2"
+git reset HEAD^
+git add --all
+git commit -m "add template for lab2"
+git push origin master
+git status
+git add --all
+git commit -m "update README and add plot"
+git push origin master
+git status
+git add --all
+git commit -m "hw4 add some graph analysis"
+git push origin master
+git push origin master
+git push origin master
+git add --all
+git commit -m "add pdf versions"
+git push origin master
+git add --all
+git commit -m "update slides"
+git push origin master
+git clone https://github.com/jettan/tikz_cnn/blob/master/main.tex
+git clone https://github.com/jettan/tikz_cnn
+git status
+git add --all
+git commit -m "add image"
+git push origin master
+git add --all
+git commit -m "add ftos architecture"
+git push origin master
+git log
+git pull origin master
+git status
+git stash
+git pull origin master
+git add --all
+git commit -m "update README"
+git push origin master
+git statusw
+git statuss
+git status
+git add --all
+git commit -m "rename HopsHive to Hive"
+git log
+clear
+
+git rebase -i HEAD~2
+clear
+
+git remove -v
+git remote -v
+git branch
+git push limmen HOPSWORKS-718
+git push --force limmen HOPSWORKS-718
+cd ..
+cd ..
+cd ..
+cd Dropbox/hops-personal/
+rm -rf blog/
+ls
+sudo rm -rf blog/
+ls
+clear
+
+git status
+git fetch --all
+git branch
+git branch
+git checkout maste
+git checkout master
+git fetch --al
+git fetch --all
+git branch -D hops_util_py_minor
+git checkout origin/0.10
+git checkout -b 0.10 origin/0.10
+git log
+git status
+git add --all
+git commit -m "hops-util-py minor release 0.10.0.2"
+git branch
+git push limmen 0.10

@@ -1,6 +1,22 @@
-;; -*- emacs-lisp -*- <17/06/03 12:49:05 /home/kim/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <19/02/24 10:10:26 /home/limmen/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
-((["scp" nil "adb" nil nil]
-  nil))
+((["ssh" "kim" "bbc1.sics.se" nil nil]
+  ("uname" "Linux 3.10.0-693.5.2.el7.x86_64")
+  ("locale" "LC_ALL=en_US.utf8")
+  ("test" "test")
+  ("remote-path"
+   ("/usr/bin" "/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+  ("remote-shell" "/bin/sh")
+  ("ls" "/usr/bin/ls --color=never")
+  ("ls-dired" t)
+  ("stat" nil)
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 1031)
+  ("readlink" "\\readlink")
+  ("file-exists" "test -e")
+  ("~" "/home/kim")))

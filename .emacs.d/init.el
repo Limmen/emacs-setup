@@ -228,3 +228,9 @@
     (getenv "PYTHONPATH")))
 
 )
+
+(use-package sparql-mode
+  :ensure t)
+
+(add-to-list 'auto-mode-alist '("\\.sparql$" . sparql-mode))
+(add-to-list 'auto-mode-alist '("\\.rq$" . sparql-mode))

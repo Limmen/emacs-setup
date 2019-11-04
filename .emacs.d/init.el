@@ -97,27 +97,6 @@
   (setq indent-tabs-mode nil)
   (setq ein:use-auto-complete t))
 
-;; erlang
-(setq load-path (cons  "/usr/lib/erlang/lib/tools-2.11/emacs"
-		       load-path))
-(setq erlang-root-dir "/usr/lib/erlang")
-(setq exec-path (cons "/usr/lib/erlang/lib" exec-path))
-(require 'erlang-start)
-(require 'erlang-flymake)
-
-(defun erlang-shell-config ()
-  "For use in `erlang-shell-hook'."
-  (local-set-key (kbd "<up>") 'comint-previous-input) ; previous history
-  (local-set-key (kbd "<down>") 'comint-next-input) ; reverse history
-  ;; more here
-  )
-(add-hook 'erlang-shell-hook 'erlang-shell-config)
-(put 'erase-buffer 'disabled nil)
-;; example of setting env var named “ERL_LIVS”, by appending a new path to existing path
-(setenv "ERL_LIBS"
-        "/home/kim/Library/Erlang/lib"
-        )
-
 ;; clear eshell
 (defun eshell/clear ()
   "04Dec2001 - sailor, to clear the eshell buffer."
@@ -141,30 +120,6 @@
                                 ("\\.m$" . mercury-mode))
                               auto-mode-alist))
 
-;;diary
-;;(setq diary-file "~/Dropbox/org/diary_file")
-(setq
- diary-display-function 'diary-fancy-display
- diary-file "~/Dropbox/org/diary_file"
- diary-comment-start "/*"
- diary-comment-end "*/"
- calendar-mark-diary-entries-flag t
- calendar-mark-holidays-flag t)
-
-(add-hook 'calendar-today-visible-hook 'calendar-mark-today)
-(add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
-(add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)
-(add-hook 'diary-list-entries-hook 'diary-sort-entries t)
-
-;;agenda
-(setq org-agenda-files (list "~/Dropbox/org/agenda/work.org"
-                             "~/Dropbox/org/agenda/school.org"
-                             "~/Dropbox/org/agenda/home.org"))
-
-
-;;bookmarks
-(setq bookmark-default-file "~/Dropbox/org/bookmarks")
-
 ;; dashboard
 (setq dashboard-items '((recents  . 5)
                         (bookmarks . 5)
@@ -180,7 +135,7 @@
   :config
   (setq TeX-auto-save t)
   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-  (setq ispell-dictionary "british")
+  (setq ispell-dictionary "american")
   (add-hook 'LaTeX-mode-hook 'ispell))
 
 (fringe-mode 10)
@@ -203,11 +158,6 @@
 (use-package paren
   :config
   (show-paren-mode +1))
-
-;; fetch KTH schedule
-(require 'fetch-schedule)
-(setq diary-remote-calendar "https://www.kth.se/social/user/192266/icalendar/1e3697b6ecf223657d5941f56a0ad2090c2bff07")
-(setq diary-remote-calendar-local-replica "~/Dropbox/org/kth_diary")
 
 (use-package markdown-mode
   :ensure t

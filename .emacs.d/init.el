@@ -19,7 +19,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(smex ivy sourcerer-theme)))
+ '(package-selected-packages '(multiple-cursors auctex smex ivy sourcerer-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -46,6 +46,14 @@
 
 (require 'smex)
 (smex-initialize)
+
+(use-package multiple-cursors
+  :ensure t  ;; This ensures the package is installed if missing
+  :bind
+  (("C-S-c C-S-c" . mc/edit-lines)
+   ("C->" . mc/mark-next-like-this)
+   ("C-<" . mc/mark-previous-like-this)
+   ("C-c C->" . mc/mark-all-like-this)))
 
 ;; Map Command key to Meta
 (setq mac-command-modifier 'meta)
@@ -104,4 +112,21 @@
 ;(global-set-key (kbd "s-:") 'end-of-buffer)
 ;(global-set-key (kbd "s-<") 'beginning-of-buffer)
 ;;(global-set-key (kbd "s-w") 'kill-ring-save)
+
+
+;;;latex config
+(use-package tex
+  :defer t
+  :ensure auctex
+  :config
+  (setq TeX-auto-save t)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (setq ispell-dictionary "american")
+  (add-hook 'LaTeX-mode-hook 'ispell))
+
+(setq TeX-view-program-selection '((output-pdf "Skim")))
+(setq TeX-source-correlate-mode t)
+(setq TeX-source-correlate-start-server t)
+(add-hook 'TeX-after-compilation-finished-functions
+          #'TeX-revert-document-buffer)
 
